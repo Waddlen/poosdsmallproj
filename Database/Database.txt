@@ -1,0 +1,19 @@
+User
+------
+Userid		INT	# Also use this as salt
+Username	CHAR(20)
+Password	CHAR(20)# We need to hash this
+DateCreated	DATE
+LastLogin	DATE
+
+PRIMARY KEY(Userid)
+
+Contact
+-------
+Contactid	INT
+Userid		INT
+ContactName	CHAR(20)
+ContactNumber	CHAR(10)
+
+PRIMARY KEY (Contactid)
+FOREIGN KEY (Userid)
