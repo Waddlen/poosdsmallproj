@@ -1,6 +1,6 @@
 # POOPsmallproj
 
-Small POOP project, due Feb 17th
+Small POOP project, due Feb 17th, presentation on Feb 4th
 
 
 # Project Description
