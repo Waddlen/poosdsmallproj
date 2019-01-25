@@ -1,8 +1,8 @@
 Current server information
 --------------------------
-ec2-34-237-2-215.compute-1.amazonaws.com
+ec2-52-91-19-201.compute-1.amazonaws.com
 
-34.237.2.215
+52.91.19.201
 
 Uses POOSDKP.pem
 
@@ -15,4 +15,4 @@ SSH in:
 
 chmod 600 ./POOSDKP.pem (ensure file permissions are sufficiently private)
 
-ssh -i POOSDKP.pem ubuntu@ec2-34-237-2-215.compute-1.amazonaws.com
+ssh -i POOSDKP.pem ubuntu@ec2-52-91-19-201.compute-1.amazonaws.com
