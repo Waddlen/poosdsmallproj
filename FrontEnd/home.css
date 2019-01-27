@@ -1,0 +1,25 @@
+*
+{
+    position: relative;
+}
+#Pname
+{
+    margin: auto;
+    text-align: center;
+}
+#LogBox1
+{
+    margin: auto;
+    border: 1px black solid;
+    text-align: center;
+    padding: 5px;
+    width: 500px;
+    margin-top: 50px;
+}
+#LogBox2
+{
+    border: 1px black solid;
+    margin: auto;
+    width: 300px;
+    padding-bottom: 5px;
+}
