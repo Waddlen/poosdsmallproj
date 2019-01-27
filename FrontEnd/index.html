@@ -11,12 +11,29 @@
     <h1 id="Pname">Generic Webpage Name</h1>
     <div id="LogBox1">
         <div id="DiscriptBox">
-            <p>Welcome to our website, if you are new to our site please make an account.<br>If you already have an account please sign in below.</p>
+            <p>Welcome to our website, if you are new to our site please make an account.</p>
             <div id="LogBox2">
-                <h2>LOG IN</h2>
+                <br>
                 <input type="text" id="user" name="user" placeholder="Username" required="required"><br><br>
                 <input type="text" id="pass" name="pass" placeholder="Password" required="required"><br>
+                <br>
+                <p>
+                    <button type="button" class="btn btn-primary btn-lg">Create Account</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-primary btn" onclick="ToggleEnter(0)">I have an Account</button>
+                </p>
             </div>
+            <div id="LogBox3">
+                    <br>
+                    <input type="text" id="user" name="user" placeholder="Username" required="required"><br><br>
+                    <input type="text" id="pass" name="pass" placeholder="Password" required="required"><br>
+                    <br>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-lg">Sign In</button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="ToggleEnter(1)">></button>
+                    </p>
+                </div>
         </div>
     </div>
     <script src="index.js"></script>

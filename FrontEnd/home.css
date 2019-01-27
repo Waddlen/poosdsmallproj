@@ -18,8 +18,15 @@
 }
 #LogBox2
 {
-    border: 1px black solid;
     margin: auto;
     width: 300px;
     padding-bottom: 5px;
+    display: block;
+}
+#LogBox3
+{
+    margin: auto;
+    width: 300px;
+    padding-bottom: 5px;
+    display: none;
 }
