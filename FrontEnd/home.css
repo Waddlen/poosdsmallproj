@@ -10,10 +10,11 @@
 #LogBox1
 {
     margin: auto;
-    border: 1px black solid;
+    border-radius: 25px;
+    background-color: rgba(200, 200, 200, 0.5);
     text-align: center;
     padding: 5px;
-    width: 500px;
+    width: 400px;
     margin-top: 50px;
 }
 #LogBox2
