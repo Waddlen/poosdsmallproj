@@ -31,3 +31,11 @@
 {
     display: none;
 }
+#LogOption1
+{
+    display: block;
+}
+#LogOption2
+{
+    display: none;
+}

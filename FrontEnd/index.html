@@ -11,25 +11,39 @@
     <h1 id="Pname">Generic Webpage Name</h1>
     <div id="LogBox1">
         <div id="DiscriptBox">
-            <br><p>Welcome to our website, if you are new to our site please make an account.</p>
             <div id="LogBox2">
-                <br>
-                <input type="text" id="user" placeholder="Username" required="required"><br><br>
-                <input type="text" id="pass" placeholder="Password" type="text" required="required"><br>
-                <input type="checkbox" onclick="passVisiblity()">Show Password
-                <br>
-                <div id="LogBox3">
+                <div id="LogOption1">
+                    <br><p>Welcome to our website, if you are new to our site please make an account.</p>
+                    <br>
+                    <input type="text" id="user" placeholder="Username" required="required"><br><br>
+                    <input type="text" id="pass" placeholder="Password" type="text" required="required"><br>
+                    <input type="checkbox" onclick="passVisiblity()">Show Password
+                    <br>
+                    <div id="LogBox3">
+                        <p>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="logOption(0)">Create Account</button>
+                        </p>
+                        <p>
+                            <button type="button" class="btn btn-primary btn" onclick="toggleEnter(0)">I have an Account</button>
+                        </p>
+                    </div>
+                    <div id="LogBox4">
+                        <p>
+                            <button type="button" class="btn btn-primary btn-lg">Sign In</button>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="toggleEnter(1)">></button>
+                        </p>
+                    </div>
+                </div>
+                <div id="LogOption2">
+                    <br><p>To complete your new account, please provide the following information.</p>
+                    <br>
+                    <input type="text" id="fname" placeholder="First Name" required="required"><br><br>
+                    <input type="text" id="lname" placeholder="Last Name" required="required"><br><br>
+                    <input type="text" id="phone" placeholder="Phone number" required="required"><br><br>
+                    <input type="text" id="email" placeholder="Email Address" required="required"><br><br>
                     <p>
                         <button type="button" class="btn btn-primary btn-lg">Create Account</button>
-                    </p>
-                    <p>
-                        <button type="button" class="btn btn-primary btn" onclick="toggleEnter(0)">I have an Account</button>
-                    </p>
-                </div>
-                <div id="LogBox4">
-                    <p>
-                        <button type="button" class="btn btn-primary btn-lg">Sign In</button>
-                        <button type="button" class="btn btn-primary btn-lg" onclick="toggleEnter(1)">></button>
+                        <button type="button" class="btn btn-primary btn-lg" onclick="logOption(1)">></button>
                     </p>
                 </div>
             </div>

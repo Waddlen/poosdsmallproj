@@ -24,3 +24,21 @@ function passVisiblity()
     x.type = "password";
   }
 }
+
+function logOption(x)
+{
+    switch(x)
+    {
+        case 0:
+            //check that username and password are new
+            document.getElementById("LogOption1").style.display = "none";
+            document.getElementById("LogOption2").style.display = "block";
+            break;
+
+        case 1:
+            //check that username and password are new
+            document.getElementById("LogOption2").style.display = "none";
+            document.getElementById("LogOption1").style.display = "block";
+            break;
+    }
+}
