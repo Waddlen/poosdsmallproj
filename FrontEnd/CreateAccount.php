@@ -6,6 +6,10 @@
     $Password = $inData["Password"];
     //No idea how to increment Userid
 
+    // Probably something along the lines of
+    // $UserId = $incrementer++;
+    // we would need to store $incrementer somewhere
+
     $conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error) 
 	{
@@ -19,7 +23,7 @@
         if (mysqli_num_rows($result) > 0 ) 
         {
             $conn->close();
-            returnWithErro( "User already exists" );
+            returnWithError( "User already exists" );
         }
         else
         {
@@ -29,7 +33,7 @@
         }
     }
 
-    function getRequestInfo()
+    	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
