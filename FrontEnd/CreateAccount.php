@@ -7,7 +7,8 @@
     //No idea how to increment Userid
 
     // Probably something along the lines of
-    // $UserId = $incrementer++;
+    // $Userid = $inData["Userid"];
+    // $Userid = incrementer++;
     // we would need to store $incrementer somewhere
 
     $conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
