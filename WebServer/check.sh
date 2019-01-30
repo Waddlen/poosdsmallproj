@@ -5,6 +5,7 @@
 cd ./poosdsmallproj/
 
 while true; do
+    git fetch
 	UPSTREAM=${1:-'@{u}'}
 	LOCAL=$(git rev-parse @)
 	REMOTE=$(git rev-parse "$UPSTREAM")
@@ -17,6 +18,7 @@ while true; do
 		git pull
 		sudo rm -rf /var/www/html/*
 		sudo cp ./FrontEnd/* /var/www/html/
+		sudo cp ./API/* /var/www/html/
 	elif [ $REMOTE = $BASE ]; then
 		echo "Need to push"
 	else
