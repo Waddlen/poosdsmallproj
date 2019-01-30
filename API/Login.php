@@ -1,6 +1,4 @@
 <?php
-
-	$inData = getRequestInfo();
 	
 	$Username = "";
 	$Userid = 0;
@@ -12,8 +10,8 @@
 	} 
 	else
 	{
-		$passwordFromPost = $_POST['password'];
-		$sql = "SELECT Userid,Username FROM User where Username='" . $inData["login"] . "'";
+		$passwordFromPost = $_POST['Password'];
+		$sql = "SELECT Userid,Username FROM User where Username='" . $_POST['Username'] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -47,11 +45,6 @@
 			
 			returnWithError( "No Records Found" );
 		}
-	}
-	
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
 	}
 
 	function sendResultInfoAsJson( $obj )
