@@ -1,9 +1,9 @@
 <?php
-
-	$inData = getRequestInfo();
 	
 	$Username = "";
 	$Userid = 0;
+	$Firstname = "";
+	$Lastname = "";
 
 	$conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error) 
@@ -12,8 +12,8 @@
 	} 
 	else
 	{
-		$passwordFromPost = $_POST['password'];
-		$sql = "SELECT Userid,Username FROM User where Username='" . $inData["login"] . "'";
+		$passwordFromPost = $_POST['Password'];
+		$sql = "SELECT Userid,Username FROM User where Username='" . $_POST['Username'] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -26,6 +26,8 @@
 			}
 
 			$Username = $row["Username"];
+			$Firstname = $row["Firstname"];
+			$Lastname = $row["Lastname"];
 			$Userid = $row["Userid"];
 
 			$timestamp = date("F j, Y \a\t g:ia");
@@ -39,7 +41,7 @@
 
 			$conn->close();
 		
-			returnWithInfo($Username, $Userid );
+			returnWithInfo($Username, $Firstname, $Lastname, $Userid );
 		}
 		else
 		{
@@ -47,11 +49,6 @@
 			
 			returnWithError( "No Records Found" );
 		}
-	}
-	
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
 	}
 
 	function sendResultInfoAsJson( $obj )
@@ -62,13 +59,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"Userid":0,"Username":"","LastName":"","error":"' . $err . '"}';
+		$retValue = '{"Username":"","Firstname":"","Lastname":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $Username, $Firstname, $Lastname, $Userid )
 	{
-		$retValue = '{"id":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
+		$retValue = '{"Username":"' . $Username . '","Firstname":"' . $Firstname . '","Lastname":"' . $Lastname . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	

@@ -1,9 +1,9 @@
 <?php
 
-    $inData = getRequestInfo();
-
-    $Username = $inData["Username"];
-    $Password = $inData["Password"];
+    $Username = $_POST['Username'];
+    $Firstname = $_POST['Firstname'];
+    $Lastname = $_POST['Lastname'];
+    $Password = $_POST['Password'];
     //No idea how to increment Userid
 
     // Probably something along the lines of
@@ -18,26 +18,21 @@
 	} 
 	else
 	{
-        $test = "SELECT Username FROM User where Username='" . $inData["Username"] . "'";
+        $test = "SELECT Username FROM User where Username='" . $Username . "'";
         $result = mysqli_query($conn, $test);
 
         if (mysqli_num_rows($result) > 0 ) 
         {
             $conn->close();
-            returnWithError( "User already exists" );
+            returnWithError( "Username already exists" );
         }
         else
         {
             $hash = password_hash($Password, PASSWORD_DEFAULT);
             $timestamp = date("F j, Y \a\t g:ia");
-            $sql = "INSERT INTO User (Username,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
+            $sql = "INSERT INTO User (Username,Firstname,Lastname,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $Firstname . "','" . $Lastname . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
         }
     }
-
-    	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
-	}
 
 	function sendResultInfoAsJson( $obj )
 	{

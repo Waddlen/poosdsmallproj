@@ -1,6 +1,4 @@
 <?php
-
-	$inData = getRequestInfo();
 	
 	$searchResults = "";
 	$searchCount = 0;
@@ -12,7 +10,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT ContactName from Contact where ContactName like '%" . $inData["search"] . "%'";
+		$sql = "SELECT ContactName from Contact where ContactName like '%" . $_POST['search'] . "%'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -35,11 +33,6 @@
 
 	returnWithInfo( $searchResults );
 
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
-	}
-
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
@@ -48,7 +41,7 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"Userid":0,"Username":"","error":"' . $err . '"}';
+		$retValue = '{"Username":"","Firstname":"","Lastname":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
