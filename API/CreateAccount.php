@@ -1,6 +1,8 @@
 <?php
 
     $Username = $_POST['Username'];
+    $Firstname = $_POST['Firstname'];
+    $Lastname = $_POST['Lastname'];
     $Password = $_POST['Password'];
     //No idea how to increment Userid
 
@@ -22,13 +24,13 @@
         if (mysqli_num_rows($result) > 0 ) 
         {
             $conn->close();
-            returnWithError( "User already exists" );
+            returnWithError( "Username already exists" );
         }
         else
         {
             $hash = password_hash($Password, PASSWORD_DEFAULT);
             $timestamp = date("F j, Y \a\t g:ia");
-            $sql = "INSERT INTO User (Username,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
+            $sql = "INSERT INTO User (Username,Firstname,Lastname,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $Firstname . "','" . $Lastname . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
         }
     }
 
