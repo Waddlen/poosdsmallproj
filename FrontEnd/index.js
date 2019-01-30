@@ -25,6 +25,7 @@ function passVisiblity()
     }
 }
 
+//Switch to additional info if necessary to create account
 function logOption(x)
 {
     switch(x)
