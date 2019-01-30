@@ -2,6 +2,8 @@
 	
 	$Username = "";
 	$Userid = 0;
+	$Firstname = "";
+	$Lastname = "";
 
 	$conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error) 
@@ -24,6 +26,8 @@
 			}
 
 			$Username = $row["Username"];
+			$Firstname = $row["Firstname"];
+			$Lastname = $row["Lastname"];
 			$Userid = $row["Userid"];
 
 			$timestamp = date("F j, Y \a\t g:ia");
@@ -37,7 +41,7 @@
 
 			$conn->close();
 		
-			returnWithInfo($Username, $Userid );
+			returnWithInfo($Username, $Firstname, $Lastname, $Userid );
 		}
 		else
 		{
