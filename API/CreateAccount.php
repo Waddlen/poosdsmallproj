@@ -1,9 +1,7 @@
 <?php
 
-    $inData = getRequestInfo();
-
-    $Username = $inData["Username"];
-    $Password = $inData["Password"];
+    $Username = $_POST['Username'];
+    $Password = $_POST['Password'];
     //No idea how to increment Userid
 
     // Probably something along the lines of
@@ -18,7 +16,7 @@
 	} 
 	else
 	{
-        $test = "SELECT Username FROM User where Username='" . $inData["Username"] . "'";
+        $test = "SELECT Username FROM User where Username='" . $Username . "'";
         $result = mysqli_query($conn, $test);
 
         if (mysqli_num_rows($result) > 0 ) 
