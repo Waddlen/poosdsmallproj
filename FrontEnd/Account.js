@@ -2,7 +2,6 @@
 var APIRoot = "http://COP4331-3.com/IceCreams/API";
 var fileExtension = ".php";
 var userId = 0;
-var firstName = '', lastName = '';
 var xhttp = new XMLHttpRequest();
 
 //Account Functions
@@ -17,15 +16,16 @@ function addUser()
 function createAccount(name,pass)
 {
     var id = addUser();
-    //var name = document.getElementById("user").value;
-    //var pass = document.getElementById("pass").value;
-    var dateMade = getAccountDate()
+    var login = document.getElementById("user").value;
+    var password = document.getElementById("pass").value;
+//     var dateMade = getAccountDate()
+//     already have this in PHP file
 }
 
 function doLogin(x)
 {
-    var name = document.getElementById("user").value;
-    var pass = document.getElementById("pass").value;
+    var login = document.getElementById("user").value;
+    var password = document.getElementById("pass").value;
     //(0) means signing into account
     if(x == 0)
     {
@@ -37,16 +37,19 @@ function doLogin(x)
         $.post('Add.php', {variable: name, variable: pass});
     }
     
+    //are these .php files referring to, what? shouldn't doLogin refer to
+    //Login.php or CreateAccount.php? Why is it referring instead to these?
+    
 }
 
-function getAccountDate()
-{
-    var d = new Date();
-    var m = d.getMonth();
-    var t = d.getDay();
-    var y = d.getFullYear();
-    //alert(m + " " + t + ", " + y);
-    return(m + " " + t + ", " + y);
-}
+// function getAccountDate()
+// {
+//     var d = new Date();
+//     var m = d.getMonth();
+//     var t = d.getDay();
+//     var y = d.getFullYear();
+//     //alert(m + " " + t + ", " + y);
+//     return(m + " " + t + ", " + y);
+// }
 
 function returnToAccount()
