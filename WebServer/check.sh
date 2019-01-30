@@ -5,14 +5,22 @@
 cd ./poosdsmallproj/
 
 while true; do
-if ! git diff --quiet remotes/origin/HEAD; then
- # Local files NOT up-to-date
- cd ..
- rm -rf ./poosdsmallproj/ # Clear out folder, in case a file is deleted in a commit
- git clone https://github.com/Xicronic/poosdsmallproj
- sudo rm -rf /var/www/html/*
- sudo cp ./poosdsmallproj/FrontEnd/* /var/www/html/
- cd ./poosdsmallproj/
-fi
-sleep 10 # Re-check in 10 seconds
+	UPSTREAM=${1:-'@{u}'}
+	LOCAL=$(git rev-parse @)
+	REMOTE=$(git rev-parse "$UPSTREAM")
+	BASE=$(git merge-base @ "$UPSTREAM")
+
+	if [ $LOCAL = $REMOTE ]; then
+		echo "Up-to-date"
+	elif [ $LOCAL = $BASE ]; then
+		echo "Need to pull"
+		git pull
+		sudo rm -rf /var/www/html/*
+		sudo cp ./FrontEnd/* /var/www/html/
+	elif [ $REMOTE = $BASE ]; then
+		echo "Need to push"
+	else
+		echo "Diverged"
+	fi
+	sleep 10 # Re-check in 10 seconds
 done
