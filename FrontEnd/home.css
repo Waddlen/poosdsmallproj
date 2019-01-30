@@ -42,3 +42,7 @@
 {
     display: none;
 }
+#LogError
+{
+    color: red;
+}
