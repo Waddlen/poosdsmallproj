@@ -1,6 +1,7 @@
 //Index Functions
 function toggleEnter(x)
 {
+    //alert(window.location.pathname);
     switch(x)
     {
         case 0:

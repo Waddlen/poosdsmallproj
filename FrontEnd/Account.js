@@ -1,5 +1,5 @@
 //API Interaction
-var APIRoot = "http://COP4331-3.com/IceCreams/API";
+var APIRoot = "../API";
 var fileExtension = ".php";
 var userId = 0;
 
