@@ -59,13 +59,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"Userid":0,"Username":"","LastName":"","error":"' . $err . '"}';
+		$retValue = '{"Username":"","Firstname":"","Lastname":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $Username, $Firstname, $Lastname, $Userid )
 	{
-		$retValue = '{"id":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
+		$retValue = '{"Username":"' . $Username . '","Firstname":"' . $Firstname . '","Lastname":"' . $Lastname . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
