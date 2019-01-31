@@ -1,15 +1,15 @@
 <?php
-	
+
 	$Username = "";
 	$Userid = 0;
 	$Firstname = "";
 	$Lastname = "";
 
-	$conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
-	if ($conn->connect_error) 
+	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
+	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
-	} 
+	}
 	else
 	{
 		$passwordFromPost = $_POST['Password'];
@@ -26,13 +26,13 @@
 			}
 
 			$Username = $row["Username"];
-			$Firstname = $row["Firstname"];
-			$Lastname = $row["Lastname"];
+			$DateCreated = $row["DateCreated"];
+			$LastLogin = $row["LastLogin"];
 			$Userid = $row["Userid"];
 
 			$timestamp = date("F j, Y \a\t g:ia");
 			$timesql = "UPDATE User SET LastLogin='" . $timestamp . "' WHERE Userid='" . $Userid . "'";
-			
+
 			if ($conn->query($sql) !== TRUE)
 			{
 				$conn->close();
@@ -40,13 +40,13 @@
 			}
 
 			$conn->close();
-		
+
 			returnWithInfo($Username, $Firstname, $Lastname, $Userid );
 		}
 		else
 		{
 			$conn->close();
-			
+
 			returnWithError( "No Records Found" );
 		}
 	}
@@ -56,17 +56,17 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-	
+
 	function returnWithError( $err )
 	{
-		$retValue = '{"Username":"","Firstname":"","Lastname":"","Userid":0,"error":"' . $err . '"}';
+		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 	function returnWithInfo( $Username, $Firstname, $Lastname, $Userid )
 	{
-		$retValue = '{"Username":"' . $Username . '","Firstname":"' . $Firstname . '","Lastname":"' . $Lastname . '","Userid":' . $Userid . ',"error":""}';
+		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 ?>
