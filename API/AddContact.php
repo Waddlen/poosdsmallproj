@@ -5,7 +5,7 @@
 	$Address = $_POST['Address'];
 	$Userid = $_POST['Userid'];
 
-	$conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
+	$conn = new mysqli("poosddb.ckbkojoxqly0.us-east-1.rds.amazonraws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
