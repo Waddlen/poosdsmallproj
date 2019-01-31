@@ -2,8 +2,6 @@
 
 	$Username = "";
 	$Userid = 0;
-	$Firstname = "";
-	$Lastname = "";
 
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
@@ -41,7 +39,7 @@
 
 			$conn->close();
 
-			returnWithInfo($Username, $Firstname, $Lastname, $Userid );
+			returnWithInfo($Username, $Userid );
 		}
 		else
 		{
@@ -63,7 +61,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $Username, $Firstname, $Lastname, $Userid )
+	function returnWithInfo( $Username, $Userid )
 	{
 		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
