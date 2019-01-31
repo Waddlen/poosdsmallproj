@@ -1,8 +1,6 @@
 <?php
 
     $Username = $_POST['Username'];
-    $Firstname = $_POST['Firstname'];
-    $Lastname = $_POST['Lastname'];
     $Password = $_POST['Password'];
     //No idea how to increment Userid
 
@@ -11,7 +9,7 @@
     // $Userid = incrementer++;
     // we would need to store $incrementer somewhere
 
-    $conn = new mysqli("52.91.19.201", "poosdAdmin", "DontForgetThis321", "poosdDB");
+    $conn = new mysqli("poosddb.ckbkojoxqly0.us-east-1.rds.amazonraws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error) 
 	{
 		returnWithError( $conn->connect_error );
@@ -30,7 +28,7 @@
         {
             $hash = password_hash($Password, PASSWORD_DEFAULT);
             $timestamp = date("F j, Y \a\t g:ia");
-            $sql = "INSERT INTO User (Username,Firstname,Lastname,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $Firstname . "','" . $Lastname . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
+            $sql = "INSERT INTO User (Username,Password,DateCreated,LastLogin) VALUES ('" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
         }
     }
 
