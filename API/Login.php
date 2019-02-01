@@ -20,6 +20,7 @@
 			$passwordFromDB = password_hash($row["Password"], PASSWORD_DEFAULT);
 			if (!password_verify($passwordFromPost,$passwordFromDB)) {
 				$conn->close();
+				echo "1";
 				returnWithError( "Invalid Password" );
 			}
 
@@ -39,12 +40,14 @@
 
 			$conn->close();
 
+			echo "0";
 			returnWithInfo($Username, $Userid );
 		}
 		else
 		{
 			$conn->close();
 
+			echo "2";
 			returnWithError( "No Records Found" );
 		}
 	}
