@@ -5,6 +5,7 @@ var userId = 0;
 
 //Account Functions
 var users = 0;
+var contacts = 0;
 
 function addUser()
 {
@@ -21,6 +22,8 @@ function createAccount(name,pass)
 //     already have this in PHP file
 }
 
+function addContact()
+
 function doLogin(x)
 {
     var login = document.getElementById("user").value;
@@ -32,7 +35,7 @@ function doLogin(x)
     if(x == 0)
     {
         //should access Login.php and post values to them. May need to use: $name = $_Post['Username']; to get value
-        $.post('Login.php', {Username: name, Password: pass},
+        $.post('Login.php', {Username: login, Password: password},
         function(data)
         {
             //if .php states: echo "0"; all is good
@@ -58,7 +61,7 @@ function doLogin(x)
     else if(x == 1)
     {
         //should access CreateAccount.php and post values to them. May need to use: $name = $_Post['Username']; to get value
-        $.post('CreateAccount.php', {Username: name, Password: pass},
+        $.post('CreateAccount.php', {Username: login, Password: password},
         function(data)
         {
             //if .php states: echo "0"; all is good
