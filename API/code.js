@@ -1,4 +1,4 @@
-var APIRoot = "http://COP4331-3.com/IceCreams/API";
+var APIRoot = "http://ec2-52-91-19-201.compute-1.amazonaws.com/API";
 var fileExtension = ".php";
 var userId = 0;
 var firstName = '', lastName = '';
