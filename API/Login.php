@@ -31,7 +31,7 @@
 			$timestamp = date("F j, Y \a\t g:ia");
 			$timesql = "UPDATE User SET LastLogin='" . $timestamp . "' WHERE Userid='" . $Userid . "'";
 
-			if ($conn->query($sql) !== TRUE)
+			if ($conn->query($timesql) !== TRUE)
 			{
 				$conn->close();
 				returnWithError( "Error updating record" );
