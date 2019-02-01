@@ -1,6 +1,7 @@
 <?php
 	
-	$ContactName = $_POST['ContactName'];
+	$ContactFirstName = $_POST['ContactName'];
+	$ContactFirstName = $_POST['ContactLastName'];
 	$ContactNumber = $_POST['ContactNumber'];
 	$Address = $_POST['Address'];
 	$Userid = $_POST['Userid'];
@@ -13,7 +14,7 @@
 	} 
 	else
 	{
-		$sql = "INSERT INTO Contact (Contactid,Userid,ContactName,ContactNumber,Address) VALUES (" . $Contactid . "," . $Userid . ",'" . $ContactName . "','" . $ContactNumber . "','" . $Address . "')";
+		$sql = "INSERT INTO Contact (Contactid,Userid,ContactFirstName,ContactLastName,ContactNumber,Address) VALUES (" . $Contactid . "," . $Userid . ",'" . $ContactFirstName . "','" . $ContactLastName . "','" . $ContactNumber . "','" . $Address . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );
