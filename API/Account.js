@@ -23,6 +23,8 @@ function createAccount(name,pass)
 }
 
 function addContact()
+{
+}
 
 function doLogin(x)
 {
