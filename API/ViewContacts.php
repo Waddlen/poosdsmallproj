@@ -20,6 +20,7 @@
 					$searchResults .= ",";
 				}
 				$searchCount++;
+        //THIS IS IDENTICAL IN SearchContacts.php: IF UPDATE HERE, UPDATE THERE
         $Contactid = $row["Contactid"];
 				$Userid = $row["Userid"];
 				$ContactFirstName = $row["ContactFirstName"];
