@@ -23,6 +23,7 @@ while true; do
 		echo "Need to push"
 	else
 		echo "Diverged"
+		git pull # Handle divergence ?
 	fi
 	sleep 10 # Re-check in 10 seconds
 done
