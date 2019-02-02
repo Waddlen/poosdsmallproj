@@ -22,6 +22,7 @@
 		else
 		{
 			$conn->close();
+			returnWithInfo($Contactid);
 		}
 	}
 
