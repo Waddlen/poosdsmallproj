@@ -5,9 +5,13 @@ Tests with * indicate there is no return on success - Jade (or someone else) pls
 I'm going to denote variables as $VAR
 
 TEST CREATE ACCOUNT
+
 INPUT: Username, Password
+
 OUTPUT:
+
   IF VALID: {"error":"", "Userid":"$NEWUSERID"}
+  
   IF INVALID: {"error":"Username already exists"}
 ```
 curl --header "Content-Type: application/json" \
