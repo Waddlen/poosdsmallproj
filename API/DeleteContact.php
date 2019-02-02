@@ -1,5 +1,8 @@
 <?php
   $_POST = json_decode(file_get_contents('php://input'), true);
+  $Userid = $_POST['Userid'];
+	//$ContactName = $_POST['ContactName']; //Not necessary?
+	$Contactid = $_POST['Contactid'];
   $conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
 	{
@@ -7,7 +10,7 @@
 	}
 	else
 	{
-        $sql = "DELETE FROM Contact WHERE Userid='" . $_POST['Userid'] . "' AND ContactName='" . $_POST['ContactName'] . "'";
+        $sql = "DELETE FROM Contact WHERE Userid='" . $Userid . "' AND ContactName='" . $Contactid . "'";
         if ($conn->query($sql) != TRUE)
         {
             $conn->close();
@@ -16,6 +19,7 @@
         else
         {
             $conn->close();
+
         }
     }
 
