@@ -62,13 +62,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":0,"error":"' . $err . '"}';
+		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":"0","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $Username, $Userid )
 	{
-		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":' . $Userid . ',"error":""}';
+		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":"' . $Userid . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
