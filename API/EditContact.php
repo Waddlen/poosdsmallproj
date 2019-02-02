@@ -24,7 +24,8 @@
         else
         {
             $conn->close();
-
+            $message = '{"error":"", "result":"edited contact"}';
+            sendResultInfoAsJson($message);
         }
     }
 
