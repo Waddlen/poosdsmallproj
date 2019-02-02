@@ -10,7 +10,7 @@
 	}
 	else
 	{
-        $sql = "DELETE FROM Contact WHERE Userid='" . $Userid . "' AND ContactName='" . $Contactid . "'";
+        $sql = "DELETE FROM Contact WHERE Userid='" . $Userid . "' AND Contactid='" . $Contactid . "'";
         if ($conn->query($sql) != TRUE)
         {
             $conn->close();
