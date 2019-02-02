@@ -2,8 +2,13 @@
 The .PHP files take JSON input.
 Here are some examples of using curl to pass JSON to the site:
 Tests with * indicate there is no return on success - Jade (or someone else) pls fix
+I'm going to denote variables as $VAR
 
-TEST CREATE ACCOUNT* (NOTE: NEED TO CHANGE USERNAME TO BE UNIQUE):
+TEST CREATE ACCOUNT
+INPUT: Username, Password
+OUTPUT:
+  IF VALID: {"error":"", "Userid":"$NEWUSERID"}
+  IF INVALID: {"error":"Username already exists"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
