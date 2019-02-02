@@ -34,7 +34,6 @@ curl --header "Content-Type: application/json" \
   ```
 TEST DELETE CONTACT*:
 ```
-TEST DELETE CONTACTS:
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"Userid":"3","Contactid":"5"}' \
