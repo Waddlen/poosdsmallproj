@@ -18,6 +18,13 @@ curl --header "Content-Type: application/json" \
   --data '{"Username":"John","Password":"Smith"}' \
   http://52.91.19.201/Login.php
   ```
+TEST VIEW CONTACTS:
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"Userid":"3"}' \
+  http://52.91.19.201/ViewContacts.php
+```
 TEST ADD CONTACT*:
 ```
 curl --header "Content-Type: application/json" \
