@@ -19,7 +19,8 @@
         else
         {
             $conn->close();
-
+            $message = '{"error":"", "result":"deleted contact"}';
+            sendResultInfoAsJson($message);
         }
     }
 
