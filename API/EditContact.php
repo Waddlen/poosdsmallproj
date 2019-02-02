@@ -1,11 +1,11 @@
 <?php
   $_POST = json_decode(file_get_contents('php://input'), true);
   $Userid = $_POST['Userid'];
-  $Contactid = $row["Contactid"];
-  $ContactFirstName = $row["ContactFirstName"];
-  $ContactLastName = $row["ContactLastName"];
-  $ContactNumber = $row["ContactNumber"];
-  $Address = $row["Address"];
+  $Contactid = $_POST["Contactid"];
+  $ContactFirstName = $_POST["ContactFirstName"];
+  $ContactLastName = $_POST["ContactLastName"];
+  $ContactNumber = $_POST["ContactNumber"];
+  $Address = $_POST["Address"];
 	//$ContactName = $_POST['ContactName']; //Not necessary?
 	$Contactid = $_POST['Contactid'];
   $conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
