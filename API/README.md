@@ -41,7 +41,7 @@ INPUT: Userid
 
 OUTPUT: an array of Contacts.
 
-IF VALID: {"results":[{"Contactid":"3","Userid":"3","ContactFirstName":"Edited3","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""},{"Contactid":"7","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""}],"error":""}
+IF VALID (example): {"results":[{"Contactid":"3","Userid":"3","ContactFirstName":"Edited3","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""},{"Contactid":"7","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""}],"error":""}
 
 IF INVALID: {"Username":"","Userid":0,"error":"No Records Found"}{"results":[],"error":""}
 ```
@@ -50,7 +50,15 @@ curl --header "Content-Type: application/json" \
   --data '{"Userid":"3"}' \
   http://52.91.19.201/ViewContacts.php
 ```
-# TEST ADD CONTACT*:
+# TEST ADD CONTACT:
+
+INPUT: ContactFirstName, ContactLastName, ContactNumber, Address
+
+OUTPUT:
+
+IF VALID: {"error":"", "Contactid":"$NEWCONTACTID"}
+
+IF INVALID: {"error":"$SomeError"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
