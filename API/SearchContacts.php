@@ -12,7 +12,7 @@
 	else
 	{
 		//$sql = "SELECT ContactName from Contact where ContactName like '%" . $search . "%'";
-		$search = '%' . $search . '%'
+		$search = '%' . $search . '%';
 		$sql = "SELECT * FROM Contact WHERE Userid=$Userid AND ((ContactFirstName like '" . $search . "') OR (ContactLastName like '" . $search . "'))";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
