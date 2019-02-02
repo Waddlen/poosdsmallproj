@@ -21,8 +21,10 @@
 		}
 		else
 		{
+			$NewContactid = $conn->insert_id;
 			$conn->close();
-			returnWithInfo($Contactid);
+			$message = '{"error":"", "Contactid":"' . $NewContactid . '"}';
+			sendResultInfoAsJson($message);
 		}
 	}
 
