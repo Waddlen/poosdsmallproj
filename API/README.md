@@ -20,7 +20,15 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/CreateAccount.php
   ```
 
-TEST LOGGING IN:
+TEST LOGGING IN: (datecreated and lastlogin are nonfunctional so their values will always be empty)
+
+INPUT: Username, Password
+
+OUTPUT
+
+IF VALID: {"Username":"$USERNAME","DateCreated":"$DATECREATED","LastLogin":"$LASTLOGIN","Userid":"$USERID","error":""}
+
+IF INVALID: {"Username":"","DateCreated":"","LastLogin":"","Userid":"0","error":"Invalid Password"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
