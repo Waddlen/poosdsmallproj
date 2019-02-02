@@ -30,6 +30,9 @@
             $timestamp = date("F j, Y \a\t g:ia");
             $sql = "INSERT INTO User (Userid, Username, Password, DateCreated, LastLogin) VALUES ('0', '" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
             $result = $conn->query($sql);
+            $NewUserid = $conn->insert_id;
+            $message = '{"error":"", "Userid":"' . $NewUserid . '"}';
+            sendResultInfoAsJson($message);
         }
     }
 
@@ -44,3 +47,4 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
+?>
