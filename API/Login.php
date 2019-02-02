@@ -11,7 +11,7 @@
 	else
 	{
 		$passwordFromPost = $_POST['Password'];
-		$sql = "SELECT Userid,Username FROM User where Username='" . $_POST['Username'] . "'";
+		$sql = "SELECT * FROM User where Username='" . $_POST['Username'] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -20,7 +20,7 @@
 			$passwordFromDB = $row["Password"];
 			if (!password_verify($passwordFromPost,$passwordFromDB)) {
 				$conn->close();
-				echo "1";
+				//echo "1";
 				returnWithError( "Invalid Password" );
 			}
 			else
@@ -41,7 +41,7 @@
 
 				$conn->close();
 
-				echo "0";
+				//echo "0";
 				returnWithInfo($Username, $Userid );
 			}
 		}
@@ -49,7 +49,7 @@
 		{
 			$conn->close();
 
-			echo "2";
+			//echo "2";
 			returnWithError( "No Records Found" );
 		}
 	}
