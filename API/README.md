@@ -32,3 +32,11 @@ curl --header "Content-Type: application/json" \
   --data '{"ContactFirstName":"Johan","ContactLastName":"Smith","ContactNumber":"9999999999","Address":"Smithson Lane","Userid":"3"}' \
   http://52.91.19.201/AddContact.php
   ```
+TEST DELETE CONTACT*:
+```
+TEST DELETE CONTACTS:
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"Userid":"3","Contactid":"5"}' \
+  http://52.91.19.201/DeleteContact.php
+  ```
