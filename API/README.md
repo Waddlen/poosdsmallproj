@@ -46,3 +46,10 @@ curl --header "Content-Type: application/json" \
   --data '{"Userid":"3","Search":"J"}' \
   http://52.91.19.201/SearchContacts.php
 ```
+EDIT CONTACT:
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"ContactFirstName":"Edited2","ContactLastName":"Smith","ContactNumber":"9999999999","Address":"Smithson Lane","Contactid":"3"}' \
+  http://52.91.19.201/EditContact.php
+```
