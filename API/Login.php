@@ -10,7 +10,7 @@
 	}
 	else
 	{
-		$passwordFromPost = password_hash($_POST['Password'], PASSWORD_DEFAULT);
+		$passwordFromPost = $_POST['Password'];
 		$sql = "SELECT Userid,Username FROM User where Username='" . $_POST['Username'] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
