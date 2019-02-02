@@ -65,7 +65,15 @@ curl --header "Content-Type: application/json" \
   --data '{"ContactFirstName":"Johan","ContactLastName":"Smith","ContactNumber":"9999999999","Address":"Smithson Lane","Userid":"3"}' \
   http://52.91.19.201/AddContact.php
   ```
-# TEST DELETE CONTACT*:
+# TEST DELETE CONTACT:
+
+INPUT: Userid, Contactid
+
+OUTPUT:
+
+IF VALID: {"error":"", "result":"deleted contact"}
+
+IF INVALID: {"error":"$SomeError"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
@@ -73,6 +81,14 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/DeleteContact.php
   ```
 # TEST SEARCH CONTACTS (Search for contact containing letter J):
+
+INPUT: Userid, Search (string to look for)
+
+OUTPUT:
+
+IF VALID (example): {"results":[{"Contactid":"7","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""},{"Contactid":"13","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""}],"error":""}
+
+IF INVALID: {"Username":"","Userid":0,"error":"No Records Found"}{"results":[],"error":""}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
@@ -80,6 +96,14 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/SearchContacts.php
 ```
 # EDIT CONTACT:
+
+INPUT: Contactid, ContactFirstName, ContactLastName, ContactNumber, Address
+
+OUTPUT:
+
+IF VALID: {"error":"", "result":"edited contact"}
+
+IF INVALID: {"error":"$SomeError"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
