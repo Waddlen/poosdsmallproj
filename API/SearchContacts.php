@@ -2,7 +2,8 @@
 	$_POST = json_decode(file_get_contents('php://input'), true);
 	$searchResults = "";
 	$searchCount = 0;
-	$search = $_POST['search'];
+	$search = $_POST['Search'];
+	$Userid = $_POST['Userid'];
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
 	{
@@ -11,7 +12,7 @@
 	else
 	{
 		//$sql = "SELECT ContactName from Contact where ContactName like '%" . $search . "%'";
-		%sql = "SELECT * FROM Contact WHERE (ContactFirstName like '%" . $search . "%') OR (ContactLastName like '%" . $search . "%')";
+		%sql = "SELECT * FROM Contact WHERE Userid=$Userid AND (ContactFirstName like '%" . $search . "%') OR (ContactLastName like '%" . $search . "%')";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
