@@ -1,5 +1,5 @@
 <?php
-
+  $_POST = json_decode(file_get_contents('php://input'), true);
 	$searchResults = "";
 	$searchCount = 0;
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
