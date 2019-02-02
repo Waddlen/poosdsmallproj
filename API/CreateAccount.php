@@ -28,7 +28,7 @@
         {
             $hash = password_hash($Password, PASSWORD_DEFAULT);
             $timestamp = date("F j, Y \a\t g:ia");
-            $sql = "INSERT INTO User (Userid, Username, Password, DateCreated, LastLogin) VALUES ("0", '" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
+            $sql = "INSERT INTO User (Userid, Username, Password, DateCreated, LastLogin) VALUES ('0', '" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
         }
     }
 
