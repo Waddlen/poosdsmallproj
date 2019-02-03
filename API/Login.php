@@ -50,7 +50,7 @@
 			$conn->close();
 
 			//echo "2";
-			returnWithError( "No Records Found" );
+			returnWithError( "Username not found" );
 		}
 	}
 
