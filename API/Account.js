@@ -27,6 +27,9 @@ function doLogin(x)
     var login = document.getElementById("user").value;
     var password = document.getElementById("pass").value;
 
+    document.getElementById("user").value = "";
+    document.getElementById("pass").value = "";
+
     //alert(login + " " + password);
     //window.location.href = "contacts.html";
 
@@ -43,17 +46,14 @@ function doLogin(x)
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
         try
         {
-            xhr.send(jsonPayload);
-            
-            var jsonObject = JSON.parse( xhr.responseText );
-            
-            userId = jsonObject.id;
-            
-            if( userId < 1 )
+            xhr.onreadystatechange = function()
             {
-                document.getElementById("LogError").innerHTML = "User/Password combination incorrect";
-                return;
-            }
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    alert("Account Created");
+                }
+            };
+            xhr.send(jsonPayload);
             /* This Looks like User info for the Contact page
             firstName = jsonObject.firstName;
             lastName = jsonObject.lastName;
@@ -76,6 +76,18 @@ function doLogin(x)
     //Create Account
     else if(x == 1)
     {
+        /*
+        var Fname = document.getElementById("fname").value;
+        var Lname = document.getElementById("lname").value;
+        var Email = document.getElementById("email").value;
+        var Addr = document.getElementById("addr").value;
+
+        document.getElementById("fname").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("addr").value = "";
+        */
+
         url = APIRoot + "CreateAccount" + fileExtension;
         xhr.open("POST", url, false);
         xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
