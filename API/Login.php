@@ -42,7 +42,7 @@
 				$conn->close();
 
 				echo "0";
-				returnWithInfo($Username, $Userid );
+				returnWithInfo($Username, $Userid, $DateCreated, $LastLogin );
 			}
 		}
 		else
@@ -62,13 +62,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":"0","error":"' . $err . '"}';
+		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $Username, $Userid )
+	function returnWithInfo( $Username, $Userid, $DateCreated, $LastLogin )
 	{
-		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":"' . $Userid . '","error":""}';
+		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
