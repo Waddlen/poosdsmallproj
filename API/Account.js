@@ -56,7 +56,7 @@ function doLogin(x)
                 return;
             }
             Username = jsonObject.Username;
-            window.location.assign(window.location.hostname + "/contacts.html");
+            window.location.assign("contacts.html");
         }
         catch(err)
         {
