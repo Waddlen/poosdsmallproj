@@ -56,7 +56,7 @@ function doLogin(x)
             document.getElementById("LogBox1").style.visibility = 'hidden';
             document.getElementById("container").style.visibility = 'visible';
         }
-        catch(err);
+        catch(err)
         {
             alert(err.message);
         }
