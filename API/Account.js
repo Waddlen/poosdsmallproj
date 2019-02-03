@@ -12,31 +12,55 @@ function doLogin(x)
     var login = document.getElementById("user").value;
     var password = document.getElementById("pass").value;
 
-    //var xhr= new XMLHttpRequest();
+    var jsonPayload = '{"Username" : "' + login + '", "Password" : "' + password + '"}';
+    var xhr= new XMLHttpRequest();
+    xhr.open("POST","./Login.php",false);
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
     //(0) means signing into account
     if(x == 0)
     {
         //should access Login.php and post values to them. May need to use: $name = $_Post['Username']; to get value
-        $.post('Login.php', {Username: login, Password: password},
-        function(data)
+//         $.post('Login.php', {Username: login, Password: password},
+//         function(data)
+//         {
+//             //if .php states: echo "0"; all is good
+//             if(data == "0")
+//             {
+//                 window.location.assign(window.location.hostname + "/contacts.html");
+//             }
+//             //Wrong password
+//             else if(data == "1")
+//             {
+//                 document.getElementById("LogError").innerHTML = "Password was incorrect";
+//             }
+//             //Account doesn't exist
+//             else
+//             {
+//                 document.getElementById("LogError").innerHTML = "This account does not exist";
+//             }
+//         });
+        
+        try
         {
-            //if .php states: echo "0"; all is good
-            if(data == "0")
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+            Userid = jsonObject.Userid;
+            LastLogin = jsonObject.LastLogin;
+            DateCreated = jsonObject.DateCreated;
+            if (Userid < 1)
             {
-                window.location.assign(window.location.hostname + "/contacts.html");
+                return;
             }
-            //Wrong password
-            else if(data == "1")
-            {
-                document.getElementById("LogError").innerHTML = "Password was incorrect";
-            }
-            //Account doesn't exist
-            else
-            {
-                document.getElementById("LogError").innerHTML = "This account does not exist";
-            }
-        });
+            Username = jsonObject.Username;
+            document.getElementById("LogBox1").style.visibility = 'hidden';
+            document.getElementById("container").style.visibility = 'visible';
+        }
+        catch(err);
+        {
+            alert(err.message);
+        }
+        
         //xhr.open("GET", "Login.php", true);
         //xhr.send();
     }
