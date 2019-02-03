@@ -13,13 +13,14 @@ function doLogin(x)
     var password = document.getElementById("pass").value;
 
     var jsonPayload = '{"Username" : "' + login + '", "Password" : "' + password + '"}';
-    var xhr= new XMLHttpRequest();
-    xhr.open("POST","./Login.php",false);
-    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
     //(0) means signing into account
     if(x == 0)
     {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./Login.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
         //should access Login.php and post values to them. May need to use: $name = $_Post['Username']; to get value
 //         $.post('Login.php', {Username: login, Password: password},
 //         function(data)
@@ -68,21 +69,44 @@ function doLogin(x)
     //(1) means creating an account
     else if(x == 1)
     {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./CreateAccount.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
         //should access CreateAccount.php and post values to them. May need to use: $name = $_Post['Username']; to get value
-        $.post('CreateAccount.php', {Username: login, Password: password},
-        function(data)
+//         $.post('CreateAccount.php', {Username: login, Password: password},
+//         function(data)
+//         {
+//             //if .php states: echo "0"; all is good
+//             if(data == "0")
+//             {
+//                 window.location.href = "contacts.html"
+//             }
+//             //Username is already being used
+//             else
+//             {
+//                 document.getElementById("LogError").innerHTML = "Sorry, but this Username has been taken";
+//             }
+//         });
+        
+        try
         {
-            //if .php states: echo "0"; all is good
-            if(data == "0")
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+            Userid = jsonObject.Userid;
+            if (Userid < 1)
             {
-                window.location.href = "contacts.html"
+                Error = jsonObject.error;
+                document.getElementById("LogError").innerHTML = Error;
+                return;
             }
-            //Username is already being used
-            else
-            {
-                document.getElementById("LogError").innerHTML = "Sorry, but this Username has been taken";
-            }
-        });
+            Username = jsonObject.Username;
+            window.location.assign("contacts.html");
+        }
+        catch(err)
+        {
+            alert(err.message);
+        }
     }
     
     //are these .php files referring to, what? shouldn't doLogin refer to
