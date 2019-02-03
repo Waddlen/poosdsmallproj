@@ -1,5 +1,5 @@
 //API Interaction
-var APIRoot = "../API/";
+var APIRoot = "ec2-52-91-19-201.compute-1.amazonaws.com/API/";
 var fileExtension = ".php";
 var userId = 0;
 
