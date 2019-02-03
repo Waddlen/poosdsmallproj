@@ -3,15 +3,6 @@ var APIRoot = "../API";
 var fileExtension = ".php";
 var userId = 0;
 
-function createAccount(name,pass)
-{
-    var login = document.getElementById("user").value;
-    var password = document.getElementById("pass").value;
-    $.post('CreateAccount.php', {Username: login, Password: password};
-//     var dateMade = getAccountDate()
-//     already have this in PHP file
-}
-
 function addContact()
 {
 }
