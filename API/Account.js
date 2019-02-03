@@ -51,11 +51,12 @@ function doLogin(x)
             DateCreated = jsonObject.DateCreated;
             if (Userid < 1)
             {
+                Error = jsonObject.error;
+                document.getElementById("LogError").innerHTML = Error;
                 return;
             }
             Username = jsonObject.Username;
-            document.getElementById("LogBox1").style.visibility = 'hidden';
-            document.getElementById("container").style.visibility = 'visible';
+            window.location.assign(window.location.hostname + "/contacts.html");
         }
         catch(err)
         {
