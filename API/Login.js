@@ -20,11 +20,11 @@ function doLogin()
       document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
       return;
     }
-    firstName = jsonObject.firstName;
-    lastName = jsonObject.lastName;
-    document.getElementById("userName").innerHTML = firstName + " " + lastName;
+   // firstName = jsonObject.firstName;
+   // lastName = jsonObject.lastName;
+   // document.getElementById("userName").innerHTML = firstName + " " + lastName;
     document.getElementById("Username").value = "";
-		document.getElementById("Password").value = "";
+    document.getElementById("Password").value = "";
     hideOrShow( "loggedInDiv", true);
     hideOrShow( "accessUIDiv", true);
     hideOrShow( "loginDiv", false);
