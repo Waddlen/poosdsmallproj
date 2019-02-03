@@ -24,7 +24,7 @@ function doLogin(x)
             //if .php states: echo "0"; all is good
             if(data == "0")
             {
-                window.location.href = "contacts.html"
+                window.location.assign(window.location.hostname + "/contacts.html");
             }
             //Wrong password
             else if(data == "1")
