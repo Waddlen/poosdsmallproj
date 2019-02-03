@@ -1,5 +1,5 @@
 //API Interaction
-var APIRoot = "../API";
+var APIRoot = "./";
 var fileExtension = ".php";
 var userId = 0;
 
