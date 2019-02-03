@@ -33,7 +33,7 @@
             $sql = "INSERT INTO User (Userid, Username, Password, DateCreated, LastLogin) VALUES ('0', '" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
             $result = $conn->query($sql);
             $NewUserid = $conn->insert_id;
-            $message = '{"error":"", "Userid":"' . $NewUserid . '"}';
+            $message = '{"error":"", "Userid":"' . $NewUserid . '", "Username":"' . $Username . '"}';
             sendResultInfoAsJson($message);
         }
     }
