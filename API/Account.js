@@ -44,6 +44,7 @@ function doLogin(x)
         try
         {
             xhr.send(jsonPayload);
+            document.write(jsonPayload);
             var jsonObject = JSON.parse( xhr.responseText );
             Userid = jsonObject.Userid;
             LastLogin = jsonObject.LastLogin;
