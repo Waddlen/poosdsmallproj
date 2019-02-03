@@ -2,7 +2,7 @@
 
 	$Username = "";
 	$Userid = 0;
-	$_POST = json_decode(file_get_contents('php://input'), true);
+	$_POST = json_decode(file_get_contents('../FrontEnd/data.JSON'), true);
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
 	{
