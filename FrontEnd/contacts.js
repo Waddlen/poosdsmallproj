@@ -1,3 +1,4 @@
+// This sorts the table when you set the filter type in the drop-down menu.
 function sortTable() {
     var table, rows, switching, i, x, y, shouldSwitch, filterType;
     table = document.getElementById("contactsTable");
@@ -44,25 +45,58 @@ function sortTable() {
     }
 }
 
+// Deletes a table entry.
 function deleteThis(id){
     if(confirm("Are you sure you would like to delete this contact?")){
         id.parentNode.parentNode.parentNode.removeChild(id.parentNode.parentNode);
     }
 }
 
-/*
-function editThis(id){
-    id.value = "Save";
-    row = id.parentNode.parentNode;
-    first = row.childNodes[3];
-    x = document.createElement("INPUT");
-    x.setAttribute("type", "text");
-      x.setAttribute("value", row.childNodes[3].innerHTML);
-    row.replaceChild(x, first);
-    last = row.childNodes[5];
-    y = document.createElement("INPUT");
-    y.setAttribute("type", "text");
-      y.setAttribute("value", row.childNodes[5].innerHTML);
-    row.replaceChild(y, last);
+// Edits a table data entry. Sets all the fields to an editable text box. 
+function editThis(el){
+    // Replace 'edit' button with a 'save' button
+    var row = el.parentNode.parentNode;
+    row.getElementByClassName
+    var editButton = row.childNodes[11].childNodes[0];
+    var first = row.childNodes[3];
+    var last = row.childNodes[5];
+    var phone = row.childNodes[7];
+    var email = row.childNodes[9];
+
+    if (editButton.innerHTML == "Edit") {
+      editButton.innerHTML = "Save";
+
+      // Make all fields for this row editable
+      first.contentEditable = "true";
+      last.contentEditable = "true";
+      phone.contentEditable = "true";
+      email.contentEditable = "true";
+      first.style.backgroundColor = "white";
+      last.style.backgroundColor = "white";
+      phone.style.backgroundColor = "white";
+      email.style.backgroundColor = "white";
+      first.style.border = "thin solid #2db2ff";
+      last.style.border = "thin solid #2db2ff";
+      phone.style.border = "thin solid #2db2ff";
+      email.style.border = "thin solid #2db2ff";
+    }
+
+    // Wait for user to click 'save' button
+    else {
+      // Upon clicking 'save' button, change all the fields back to html, but with new values.
+      editButton.innerHTML = "Edit";
+
+      first.contentEditable = "false";
+      last.contentEditable = "false";
+      phone.contentEditable = "false";
+      email.contentEditable = "false";
+      first.style.backgroundColor = "initial";
+      last.style.backgroundColor = "initial";
+      phone.style.backgroundColor = "initial";
+      email.style.backgroundColor = "initial";
+      first.style.border = "initial";
+      last.style.border = "initial";
+      phone.style.border = "initial";
+      email.style.border = "initial";      
+    }
 }
-*/
