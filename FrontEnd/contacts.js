@@ -122,15 +122,15 @@ function editThis(el){
 
 function AddContact()
 {
-  var fname = document.getElementById("fname");
-  var lname = document.getElementById("lname");
-  var phone = document.getElementById("phone");
-  var addr = document.getElementById("addr");
+  var fname = document.getElementById("fname").value;
+  var lname = document.getElementById("lname").value;
+  var phone = document.getElementById("phone").value;
+  var addr = document.getElementById("addr").value;
 
-  document.getElementById("fname") = "";
-  document.getElementById("lname") = "";
-  document.getElementById("phone") = "";
-  document.getElementById("addr") = "";
+  document.getElementById("fname").value = "";
+  document.getElementById("lname").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("addr").value = "";
 
   if(fname == "" || lname == "" || phone == "")
   {
