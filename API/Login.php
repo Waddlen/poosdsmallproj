@@ -42,7 +42,7 @@
 				$conn->close();
 
 				//echo "0";
-				returnWithInfo($Username, $Userid );
+				returnWithInfo($Username, $Userid, $DateCreated, $LastLogin );
 			}
 		}
 		else
@@ -66,7 +66,7 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $Username, $Userid )
+	function returnWithInfo( $Username, $Userid, $DateCreated, $LastLogin )
 	{
 		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":"' . $Userid . '","error":""}';
 		sendResultInfoAsJson( $retValue );
