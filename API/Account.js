@@ -45,7 +45,7 @@ function searchContacts() {
                         var opt = document.createElement("option");
                         var jsonObjectTwo = jsonObject.results[i];
                         var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
-                        alert(ContactName);
+                        //alert(ContactName);
                         opt.text = ContactName;
                         opt.value = "";
                         contactList.options.add(opt);
