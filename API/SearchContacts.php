@@ -35,16 +35,17 @@
 				$searchResults .= '{"Contactid":"' . $Contactid . '","Userid":"' . $Userid . '","ContactFirstName":"' . $ContactFirstName . '","ContactLastName":"' . $ContactLastName . '","ContactNumber":"' . $ContactNumber . '","Address":"' . $Address . '","error":""}';
 				//$searchResults .= '"' . $row["Name"] . '"';
 			}
+			returnWithInfo( $searchResults );
 		}
 		else
 		{
-			//returnWithError( "No Records Found" );
-			$error = "No Records Found";
+			returnWithError( "No Records Found" );
+			//$error = "No Records Found";
 		}
 		$conn->close();
 	}
 
-	returnWithInfo( $searchResults );
+	
 
 	function sendResultInfoAsJson( $obj )
 	{
@@ -60,7 +61,7 @@
 
 	function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":"' . $error . '"}';
+		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 
