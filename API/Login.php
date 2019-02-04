@@ -2,7 +2,7 @@
 
 	$Username = "";
 	$Userid = 0;
-	$_POST = json_decode(file_get_contents('../FrontEnd/data.JSON'), true);
+	$_POST = json_decode(file_get_contents('php://input'), true);
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
 	{
@@ -50,7 +50,7 @@
 			$conn->close();
 
 			//echo "2";
-			returnWithError( "No Records Found" );
+			returnWithError( "Username not found" );
 		}
 	}
 
@@ -62,13 +62,13 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":"0","error":"' . $err . '"}';
+		$retValue = '{"Username":"","DateCreated":"","LastLogin":"","Userid":0,"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $Username, $Userid, $DateCreated, $LastLogin )
 	{
-		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":"' . $Userid . '","error":""}';
+		$retValue = '{"Username":"' . $Username . '","DateCreated":"' . $DateCreated . '","LastLogin":"' . $LastLogin . '","Userid":' . $Userid . ',"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 

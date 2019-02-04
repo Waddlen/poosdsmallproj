@@ -11,7 +11,6 @@
     <title>Contacts | Contact Manager</title>
   </head>
   <body>
-    <body onload="searchContacts()"></body>
     <div class="container">  
       <h2>Contacts List</h2>
 
@@ -74,29 +73,16 @@
           <div class="col-auto my-1">
             <button type="button" class="btn btn-primary btn" onclick="doLogout()">Logout</button>
           </div>
+          <div class="col-auto my-1">
+            <select id="contactList" style="display:none; visibility:hidden">
+          </div>
         </div>
       </form>
 
 
       <pre></pre>
 
-      <div class="col-auto my-1">
-        <table id="contactList" style="display:none; visibility:hidden" class="table table-striped">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Email</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-
-      <!--
+      
       <table class="table table-striped" id="contactsTable">
           <thead class="thead-dark">
             <tr>
@@ -193,7 +179,6 @@
             </tr>
           </tbody>
         </table>
-      -->
       <!-- Optional JavaScript -->
       <!-- Javascript -->
       <script src="Account.js"></script>

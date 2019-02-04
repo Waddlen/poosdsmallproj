@@ -42,21 +42,12 @@ function searchContacts() {
                     var i;
                     for (i = 0; i < jsonObject.results.length; i++)
                     {
-                        //var opt = document.createElement("option");
-                        var table = document.getElementById("contactList");
-                        var jsonObjectTwo = jsonObject.results[i];
-                        var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
-                        var newContact = table.createTHead(jsonObjectTwo.Userid);
-                        var newContactinfo = newContact.insertRow(0);
-                        newContactinfo.scope = "row";
-                        newContactinfo.value = "1";
-                        newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
-                        var newRow = table.rows[0];
-                        table.parent.insertBefore(newRow, table.rows[1]);
-                        //alert(ContactName);
-                        //opt.text = ContactName;
-                        //opt.value = "";
-                        //contactList.options.add(opt);
+                        var opt = document.createElement("option");
+                        var jsonObjectTwo = JSON.parse( jsonObject.results[i] );
+                        var ContactName = jsonObjectTwo.ContactFirstName + jsonObjectTwo.ContactLastName;
+                        opt.text = ContactName;
+                        opt.value = "";
+                        contactList.options.add(opt);
                     }
                 }
             };

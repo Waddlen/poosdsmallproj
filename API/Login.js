@@ -1,7 +1,7 @@
 function doLogin()
 {
-  var login = document.getElementById("Username").value;
-  var password = document.getElementById("Password").value;
+  var login = document.getElementById("loginName").value;
+  var password = document.getElementById("loginPassword").value;
   document.getElementById("loginResult").innerHTML = "";
   
   var jsonPayload = '{"login" : "' + login + '", "password" : "' + password + '"}';
@@ -20,11 +20,11 @@ function doLogin()
       document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
       return;
     }
-   // firstName = jsonObject.firstName;
-   // lastName = jsonObject.lastName;
-   // document.getElementById("userName").innerHTML = firstName + " " + lastName;
-    document.getElementById("Username").value = "";
-    document.getElementById("Password").value = "";
+    firstName = jsonObject.firstName;
+    lastName = jsonObject.lastName;
+    document.getElementById("userName").innerHTML = firstName + " " + lastName;
+    document.getElementById("loginName").value = "";
+		document.getElementById("loginPassword").value = "";
     hideOrShow( "loggedInDiv", true);
     hideOrShow( "accessUIDiv", true);
     hideOrShow( "loginDiv", false);

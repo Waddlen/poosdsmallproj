@@ -21,17 +21,19 @@
 
         if (mysqli_num_rows($result) > 0 )
         {
+	    //echo "1";
             $conn->close();
             returnWithError( "Username already exists" );
         }
         else
         {
+	    //echo "0";
             $hash = password_hash($Password, PASSWORD_DEFAULT);
             $timestamp = date("F j, Y \a\t g:ia");
             $sql = "INSERT INTO User (Userid, Username, Password, DateCreated, LastLogin) VALUES ('0', '" . $Username . "','" . $hash . "', '" . $timestamp . "','" . $timestamp . "')";
             $result = $conn->query($sql);
             $NewUserid = $conn->insert_id;
-            $message = '{"error":"", "Userid":"' . $NewUserid . '"}';
+            $message = '{"error":"", "Userid":"' . $NewUserid . '", "Username":"' . $Username . '"}';
             sendResultInfoAsJson($message);
         }
     }
@@ -44,7 +46,7 @@
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '", "Userid": 0, "Username":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
