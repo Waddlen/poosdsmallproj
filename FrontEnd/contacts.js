@@ -153,9 +153,10 @@ function EditContact()
   document.getElementById("phone2").value = "";
   document.getElementById("addr2").value = "";  
     
-  if(fname == ""||lname == ""||phone == ""||addr == "")
+  //if(fname == ""||lname == ""||phone == ""||addr == "")
+  if(fname == "")
   {
-    alert("Contact not Edited. Missing information");
+    alert("Contact not Edited. Need a first name");
   }
   else
   {
@@ -202,7 +203,7 @@ function AddContact()
   //if(fname == "" || lname == "" || phone == "" || addr == "")
   if(fname == "")
   {
-    alert("Contact not Created. Missing information");
+    alert("Contact not Created. Need a first name");
   }
   else
   {
