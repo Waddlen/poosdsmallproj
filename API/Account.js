@@ -26,22 +26,25 @@ function searchContacts() {
             {
                 if (this.readyState == 4 && this.status == 200)
                 {
-                    var values = '';
+                    hideOrShow( "contactList", true );
+                    document.getElementById("contactSearchResult").innerHTML = "Contact(s) retrieved successfully";
                     var jsonObject = JSON.parse( xhr.responseText );
+                    
                     var i;
                     for (i = 0; i < jsonObject.results.length; i++)
                     {
-                        values += jsonObject.results[i];
-                        values += "\r";
+                        var opt = document.createElement("option");
+                        opt.text = jsonObject.results[i];
+                        opt.value = "";
+                        contactList.options.add(opt);
                     }
-                    alert(values);
                 }
             };
             xhr.send(jsonPayload);
         }
         catch(err)
         {
-            alert(err.message);
+            document.getElementById("contactSearchResult").innerHTML = err.message;
         }
     }
     else 
