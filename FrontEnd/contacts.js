@@ -205,38 +205,38 @@ function AddContact()
   else
   {
       if (localStorage.hasOwnProperty("Userid")) 
-  {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "./AddContact.php", false);
-      xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
-      var id = localStorage.getItem("Userid");
-
-      var jsonPayload = '{"ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "ContactNumber" : "' + phone + '", "Address" : "' + addr + '", "Userid" : "' + id + '"}';
-
-      try
       {
-        xhr.send(jsonPayload);
-        var jsonObject = JSON.parse( xhr.responseText );
-        Userid = jsonObject.Userid;
-        if (Userid < 1)
-        {
-            Error = jsonObject.error;
-            document.getElementById("LogError").innerHTML = Error;
-            return;
-        }
-        Username = jsonObject.Username;
-        window.location.assign("contacts.html");
-        localStorage.setItem("Userid",Userid);
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "./AddContact.php", false);
+          xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+          var id = localStorage.getItem("Userid");
+
+          var jsonPayload = '{"ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "ContactNumber" : "' + phone + '", "Address" : "' + addr + '", "Userid" : "' + id + '"}';
+
+          try
+          {
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+            Userid = jsonObject.Userid;
+            if (Userid < 1)
+            {
+                Error = jsonObject.error;
+                document.getElementById("LogError").innerHTML = Error;
+                return;
+            }
+            Username = jsonObject.Username;
+            window.location.assign("contacts.html");
+            localStorage.setItem("Userid",Userid);
+          }
+          catch(err)
+          {
+              alert(err.message);
+          }
+
       }
-      catch(err)
+      else
       {
-          alert(err.message);
+          window.location.assign("index.html");
       }
-       
-  }
-  else
-  {
-      window.location.assign("index.html");
-  }
   }
 }
