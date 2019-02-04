@@ -52,7 +52,7 @@ function searchContacts() {
                         newContactinfo.value = "1";
                         newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
                         var newRow = table.rows[0];
-                        newRow.parent.insertBefore(newRow, table.rows[1]);
+                        table.parent.insertBefore(newRow, table.rows[1]);
                         //alert(ContactName);
                         //opt.text = ContactName;
                         //opt.value = "";
