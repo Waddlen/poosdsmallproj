@@ -222,7 +222,7 @@ function AddContact()
                 {
                     confirm("Error adding contact.");
                 }
-              location.reload(); // force refresh ?
+              window.location.reload(); // force refresh ?
           }
           catch(err)
           {
