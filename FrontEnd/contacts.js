@@ -119,3 +119,8 @@ function editThis(el){
       email.style.border = "initial";      
     }
 }
+
+function AddContact()
+{
+  var fname = document.getElementById;
+}
