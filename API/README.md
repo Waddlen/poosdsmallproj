@@ -93,3 +93,15 @@ curl --header "Content-Type: application/json" \
   --data '{"ContactFirstName":"Edited2","ContactLastName":"Smith","ContactNumber":"9999999999","Address":"Smithson Lane","Contactid":"3"}' \
   http://52.91.19.201/EditContact.php
 ```
+### ARC EXAMPLE (login)
+Go to post -> body
+
+request url: http://52.91.19.201/Login.php
+
+application/json Raw Input
+
+{"Username":"John","Password":"Smith"}
+
+
+SEND
+
