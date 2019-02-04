@@ -1,4 +1,5 @@
 // This sorts the table when you set the filter type in the drop-down menu.
+// Also runs the 'search' function, which requires the name entered to match exactly
 function sortTable() {
     var table, rows, switching, i, x, y, shouldSwitch, filterType;
     table = document.getElementById("contactsTable");
@@ -41,6 +42,24 @@ function sortTable() {
         and mark that a switch has been done: */
         rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
+      }
+    }
+
+    // Now run the search query as well
+    var searchText = document.getElementById("searchbox").value.toLowerCase();
+
+    // Search through all the names and remove those which don't match.
+    var tableText, match = false;
+    for (var i = table.childNodes[3].childNodes.length - 2; i > 0; i-=2) {
+      // First name
+      tableText = table.childNodes[3].childNodes[i].childNodes[3].innerHTML.toLowerCase();
+      if (searchText == tableText)
+        match = true;
+      
+      // Last name
+      tableText = table.childNodes[3].childNodes[i].childNodes[5].innerHTML.toLowerCase();
+      if (searchText != tableText && match == false) {
+        table.childNodes[3].removeChild(table.childNodes[3].childNodes[i]);
       }
     }
 }
