@@ -47,8 +47,8 @@ function searchContacts()
                     {
                         alert("Error: no matching contacts found");   
                     }
-                    else
-                    {
+                   // else
+                   // {
                         var jsonObject = JSON.parse( xhr.responseText );
                         var table = document.getElementById("contactList");
                         table.deleteTHead();
@@ -80,7 +80,7 @@ function searchContacts()
                                     //contactList.options.add(opt);
                                 }
                             }
-                    }
+                    //}
                     
                     
                 }
