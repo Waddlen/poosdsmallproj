@@ -43,15 +43,20 @@ function searchContacts()
                 {
                     hideOrShow( "contactList", true );
                     var str = xhr.responseText;
-                    if(str.includes("No Records Found"))
-                    {
-                        alert("Error: no matching contacts found");   
-                    }
+                    
                    // else
                    // {
                         var jsonObject = JSON.parse( xhr.responseText );
                         var table = document.getElementById("contactList");
                         table.deleteTHead();
+                        if(str.includes("No Records Found"))
+                        {
+                            //alert("Error: no matching contacts found");
+                            var newContact = table.createTHead(jsonObjectTwo.Userid);
+                            var newContactinfo = newContact.insertRow(0);
+                            newContactinfo.scope = "row";
+                            newContactinfo.insertCell(0).outerHTML = '<th scope="col">No matching contacts found</th>';
+                        }
                             for (var i = 0; i < jsonObject.results.length; i++)
                             {
                                 //var opt = document.createElement("option");
