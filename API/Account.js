@@ -50,9 +50,10 @@ function searchContacts() {
                         var newContactinfo = newContact.insertRow(0);
                         newContactinfo.scope = "row";
                         newContactinfo.value = "1";
-                        newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
-                        newContactinfo.insertCell(1).outerHTML = "<td>"+jsonObjectTwo.ContactLastName+"</td>";
-                        newContactinfo.insertCell(2).outerHTML = "<td>"+jsonObjectTwo.ContactNumber+"</td>";
+                        newContactinfo.insertCell(0).outerHTML = "<td>"+(i+1)+"</td>";
+                        newContactinfo.insertCell(1).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
+                        newContactinfo.insertCell(2).outerHTML = "<td>"+jsonObjectTwo.ContactLastName+"</td>";
+                        newContactinfo.insertCell(3).outerHTML = "<td>"+jsonObjectTwo.ContactNumber+"</td>";
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
                         //alert(ContactName);
