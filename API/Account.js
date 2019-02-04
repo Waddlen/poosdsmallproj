@@ -43,7 +43,7 @@ function searchContacts() {
                     for (i = 0; i < jsonObject.results.length; i++)
                     {
                         var opt = document.createElement("option");
-                        var jsonObjectTwo = jsonObject.results[i].parse;
+                        var jsonObjectTwo = jsonObject.results[i];
                         var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
                         alert(ContactName);
                         opt.text = ContactName;
