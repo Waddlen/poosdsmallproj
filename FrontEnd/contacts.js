@@ -176,6 +176,7 @@ function EditContact()
             {
                 confirm("Error editing contact.");
             }
+          window.location.reload();
       }
       catch(err)
       {
