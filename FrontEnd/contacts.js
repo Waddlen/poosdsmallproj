@@ -46,7 +46,7 @@ function sortTable() {
     }
 
     // Now run the search query as well
-    var searchText = document.getElementById("searchbox").value.toLowerCase();
+    var searchText = document.getElementById("inlineFormInputName").value.toLowerCase();
 
     // Search through all the names and remove those which don't match.
     var tableText, match = false;
