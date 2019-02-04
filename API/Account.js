@@ -35,6 +35,7 @@ function searchContacts() {
                     {
                         var opt = document.createElement("option");
                         opt.text = jsonObject.results[i];
+                        document.write(jsonObject.results[i]);
                         opt.value = "";
                         contactList.options.add(opt);
                     }
