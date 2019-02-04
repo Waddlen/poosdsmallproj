@@ -65,7 +65,7 @@ function sortTable() {
 }
 
 // Deletes a table entry.
-function deleteThis(id){
+function deleteThis(id, val){
     if(confirm("Are you sure you would like to delete this contact?")){
         id.parentNode.parentNode.parentNode.removeChild(id.parentNode.parentNode);
         
@@ -73,7 +73,7 @@ function deleteThis(id){
         xhr.open("POST","./DeleteContact.php",false);
         xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
-        var jsonPayload = '{"Contactid" : "' + id + '"}';
+        var jsonPayload = '{"Contactid" : "' + val + '"}';
 
         try
         {
