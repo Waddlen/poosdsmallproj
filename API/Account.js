@@ -51,6 +51,12 @@ function searchContacts() {
     }
 }
 
+function doLogout()
+{
+    window.location.assign("index.html");
+    localStorage.removeItem("Userid");
+}
+
 function doLogin(x)
 {
     var login = document.getElementById("user").value;
