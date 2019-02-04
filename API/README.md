@@ -35,21 +35,6 @@ curl --header "Content-Type: application/json" \
   --data '{"Username":"John","Password":"Smith"}' \
   http://52.91.19.201/Login.php
   ```
-# TEST VIEW CONTACTS:
-
-INPUT: Userid
-
-OUTPUT: an array of Contacts.
-
-IF VALID (example): {"results":[{"Contactid":"3","Userid":"3","ContactFirstName":"Edited3","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""},{"Contactid":"7","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""}],"error":""}
-
-IF INVALID: {"Username":"","Userid":0,"error":"No Records Found"}{"results":[],"error":""}
-```
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"Userid":"3"}' \
-  http://52.91.19.201/ViewContacts.php
-```
 # TEST ADD CONTACT:
 
 INPUT: ContactFirstName, ContactLastName, ContactNumber, Address
@@ -66,6 +51,14 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/AddContact.php
   ```
 # TEST DELETE CONTACT*:
+INPUT: Contactid
+
+OUTPUT: 
+
+IF VALID: (nothing)
+
+IF INVALID: IF INVALID: {"Username":"","Userid":0,"error":"$SomeError"}
+
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
@@ -73,6 +66,13 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/DeleteContact.php
   ```
 # TEST SEARCH CONTACTS (Search for contact containing letter J):
+INPUT: Userid
+
+OUTPUT: an array of Contacts.
+
+IF VALID (example): {"results":[{"Contactid":"3","Userid":"3","ContactFirstName":"Edited3","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""},{"Contactid":"7","Userid":"3","ContactFirstName":"Johan","ContactLastName":Smith,"ContactNumber":"9999999999","Address":"Smithson Lane","error":""}],"error":""}
+
+IF INVALID: {"Username":"","Userid":0,"error":"No Records Found"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
@@ -80,6 +80,13 @@ curl --header "Content-Type: application/json" \
   http://52.91.19.201/SearchContacts.php
 ```
 # EDIT CONTACT:
+INPUT: Contactid, ContactFirstName, ContactLastName, ContactNumber, Address
+
+OUTPUT: an array of Contacts.
+
+IF VALID: (nothing)
+
+IF INVALID: {"Username":"","Userid":0,"error":"$SomeError"}
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
