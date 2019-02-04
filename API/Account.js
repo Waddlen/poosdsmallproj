@@ -3,10 +3,6 @@ var APIRoot = "./";
 var fileExtension = ".php";
 var userId = 0;
 
-function addContact()
-{
-}
-
 function hideOrShow (elementId, showState)
 {
     var vis = "visible";
