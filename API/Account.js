@@ -42,10 +42,11 @@ function searchContacts()
                 if (this.readyState == 4 && this.status == 200)
                 {
                     hideOrShow( "contactList", true );
+                    var str = xhr.responseText;
                     var jsonObject = JSON.parse( xhr.responseText );
                     var table = document.getElementById("contactList");
                     table.deleteTHead();
-                    if(xhr.responseText.includes("No Records Found"))
+                    if(str.includes("No Records Found"))
                     {
                         alert("Error: no matching contacts found");   
                     }
