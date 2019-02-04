@@ -69,7 +69,7 @@ curl --header "Content-Type: application/json" \
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
-  --data '{"Userid":"3","Contactid":"5"}' \
+  --data '{"Contactid":"33"}' \
   http://52.91.19.201/DeleteContact.php
   ```
 # TEST SEARCH CONTACTS (Search for contact containing letter J):
