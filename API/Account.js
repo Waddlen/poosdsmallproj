@@ -45,8 +45,13 @@ function searchContacts()
                     var jsonObject = JSON.parse( xhr.responseText );
                     var table = document.getElementById("contactList");
                     table.deleteTHead();
-                    
-                    for (var i = 0; i < jsonObject.results.length; i++)
+                    if(xhr.responseText.includes("No Records Found"))
+                    {
+                        alert("Error: no matching contacts found");   
+                    }
+                    else
+                    {
+                        for (var i = 0; i < jsonObject.results.length; i++)
                     {
                         //var opt = document.createElement("option");
                         var jsonObjectTwo = jsonObject.results[i];
@@ -74,6 +79,9 @@ function searchContacts()
                             //contactList.options.add(opt);
                         }
                     }
+                    }
+                    
+                    
                 }
             };
             xhr.send(jsonPayload);
