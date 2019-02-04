@@ -16,32 +16,7 @@ function hideOrShow (elementId, showState)
     document.getElementById(elementId).style.display=dis;
 }
 
-function setUpdateId(val)
-{
-    localStorage.setItem("Updateid",val);
-}
-
-function deleteContact(val)
-{
-    var xhr= new XMLHttpRequest();
-    xhr.open("POST","./DeleteContact.php",false);
-    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
-    
-    var jsonPayload = '{"Contactid" : "' + val + '"}';
-    
-    try
-    {
-        xhr.send(jsonPayload);
-        var jsonObject = JSON.parse( xhr.responseText );
-    }
-    catch(err)
-    {
-        alert(err.message);
-    }
-}
-
-function searchContacts() 
-    {
+function searchContacts() {
     var search = document.getElementById("inlineFormInputName").value;
     
     if (localStorage.hasOwnProperty("Userid"))
@@ -74,13 +49,13 @@ function searchContacts()
                         var newContactinfo = newContact.insertRow(0);
                         newContactinfo.scope = "row";
                         newContactinfo.value = "1";
-                        newContactinfo.insertCell(0).outerHTML = "<td>"+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-                        newContactinfo.insertCell(1).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
-                        newContactinfo.insertCell(2).outerHTML = "<td>"+jsonObjectTwo.ContactLastName+"</td>";
-                        newContactinfo.insertCell(3).outerHTML = "<td>"+jsonObjectTwo.ContactNumber+"</td>";
-                        newContactinfo.insertCell(4).outerHTML = "<td>"+jsonObjectTwo.Address+"</td>";
-                        newContactinfo.insertCell(5).outerHTML = '<td><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" onclick="setUpdateId(jsonObjectTwo.Contactid)" data-toggle="modal" data-target="#EditContactModal">Edit</button></td>';
-                        newContactinfo.insertCell(6).outerHTML = '<td><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" onclick="deleteThis(this); deleteContact(jsonObjectTwo.Contactid);">Delete</button></td>';
+                        newContactinfo.insertCell(0).outerHTML = '<th scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                        newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"</th>";
+                        newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"</th>";
+                        newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"</th>";
+                        newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
+                        newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></th>';
+                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" onclick="deleteThis(this)">Delete</button></th>';
                         newContactinfo.cells.scope = "col";
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
