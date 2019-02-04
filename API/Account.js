@@ -16,7 +16,32 @@ function hideOrShow (elementId, showState)
     document.getElementById(elementId).style.display=dis;
 }
 
-function searchContacts() {
+function setUpdateId(val)
+{
+    localStorage.setItem("Updateid",val);
+}
+
+function deleteContact(val) 
+{
+    var xhr= new XMLHttpRequest();
+    xhr.open("POST","./DeleteContact.php",false);
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+    
+    var jsonPayload = '{"Contactid" : "' + val + '"}';
+    
+    try
+    {
+        xhr.send(jsonPayload);
+        var jsonObject = JSON.parse( xhr.responseText );
+    }
+    catch(err)
+    {
+        alert(err.message);
+    }
+}
+
+function searchContacts() 
+{
     var search = document.getElementById("inlineFormInputName").value;
     
     if (localStorage.hasOwnProperty("Userid"))
@@ -54,8 +79,9 @@ function searchContacts() {
                         newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"</th>";
                         newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"</th>";
                         newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
-                        newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></th>';
-                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" value=jsonObjectTwo.Contactid class="btn btn-primary btn" onclick="deleteThis(this)">Delete</button></th>';
+                        var Contactid = jsonObjectTwo.Contactid;
+                        newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" onclick="setUpdateId(Contactid)" class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></th>';
+                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" class="btn btn-primary btn" onclick="deleteThis(this); deleteContact(Contactid)">Delete</button></th>';
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
                         //alert(ContactName);
