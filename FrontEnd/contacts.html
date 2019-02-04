@@ -70,6 +70,31 @@
                   </div>
                 </div>
               </div>
+              <div class="modal" id="EditContactModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Edit Contact</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <input type="text" id="fname" placeholder="First Name" required="required">
+                      <input type="text" id="lname" placeholder="Last Name" required="required"><br><br>
+                      <input type="text" id="phone" placeholder="Phone number" required="required">
+                      <input type="text" id="addr" placeholder="Address" required="required"><br><br>
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary btn" onclick="EditContact()">Update Contact</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
             </div>
           <div class="col-auto my-1">
             <button type="button" class="btn btn-primary btn" onclick="doLogout()">Logout</button>
