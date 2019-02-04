@@ -68,6 +68,22 @@ function sortTable() {
 function deleteThis(id){
     if(confirm("Are you sure you would like to delete this contact?")){
         id.parentNode.parentNode.parentNode.removeChild(id.parentNode.parentNode);
+        
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./DeleteContact.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+
+        var jsonPayload = '{"Contactid" : "' + val + '"}';
+
+        try
+        {
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+        }
+        catch(err)
+        {
+            alert(err.message);
+        }
     }
 }
 
