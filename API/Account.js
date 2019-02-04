@@ -21,7 +21,7 @@ function hideOrShow (elementId, showState)
 }
 
 function searchContacts() {
-    var search = document.getElementById("searchButton").value;
+    var search = document.getElementById("inlineFormInputName").value;
     
     if (localStorage.hasOwnProperty("Userid"))
     {
