@@ -199,7 +199,8 @@ function AddContact()
   document.getElementById("phone").value = "";
   document.getElementById("addr").value = "";
 
-  if(fname == "" || lname == "" || phone == "" || addr == "")
+  //if(fname == "" || lname == "" || phone == "" || addr == "")
+  if(fname == "")
   {
     alert("Contact not Created. Missing information");
   }
