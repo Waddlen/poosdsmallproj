@@ -152,8 +152,10 @@ function EditContact()
   document.getElementById("lname2").value = "";
   document.getElementById("phone2").value = "";
   document.getElementById("addr2").value = "";
+  
+  var fname3 = fname;  
     
-  if(fname2 == "" || lname2 == "" || phone2 == "" || addr2 == "")
+  if(fname3 == "")
   {
     alert("Contact not Edited. Missing information");
   }
