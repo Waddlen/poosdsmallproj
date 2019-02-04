@@ -62,7 +62,7 @@ function searchContacts()
                         newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
                         var Contactid = jsonObjectTwo.Contactid;
                         newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" onclick="setUpdateId(Contactid)" class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></th>';
-                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" class="btn btn-primary btn" onclick="deleteThis(this)">Delete</button></th>';
+                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" class="btn btn-primary btn" onclick="deleteThis(this, Contactid)">Delete</button></th>';
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
                         //alert(ContactName);
