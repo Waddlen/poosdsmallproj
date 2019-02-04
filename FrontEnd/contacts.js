@@ -79,6 +79,11 @@ function deleteThis(id, val){
         {
             xhr.send(jsonPayload);
             var jsonObject = JSON.parse( xhr.responseText );
+            var error = jsonObject.error;
+            if (error != "")
+            {
+                confirm("Error deleting contact.");
+            }
         }
         catch(err)
         {
