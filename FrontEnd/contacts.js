@@ -122,5 +122,44 @@ function editThis(el){
 
 function AddContact()
 {
-  var fname = document.getElementById;
+  var fname = document.getElementById("fname");
+  var lname = document.getElementById("lname");
+  var phone = document.getElementById("phone");
+  var addr = document.getElementById("addr");
+
+  document.getElementById("fname") = "";
+  document.getElementById("lname") = "";
+  document.getElementById("phone") = "";
+  document.getElementById("addr") = "";
+
+  if(fname == "" || lname == "" || phone == "")
+  {
+    alert("Contact not Created. Missing information");
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./AddContact.php", false);
+  xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+
+  var jsonPayload = '{"ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "Contactnumber" : "' + phone + '", "Address" : "' + addr + '"}';
+
+  try
+  {
+    xhr.send(jsonPayload);
+    var jsonObject = JSON.parse( xhr.responseText );
+    Userid = jsonObject.Userid;
+    if (Userid < 1)
+    {
+        Error = jsonObject.error;
+        document.getElementById("LogError").innerHTML = Error;
+        return;
+    }
+    Username = jsonObject.Username;
+    window.location.assign("contacts.html");
+    localStorage.setItem("Userid",Userid);
+  }
+  catch(err)
+  {
+      alert(err.message);
+  }
 }
