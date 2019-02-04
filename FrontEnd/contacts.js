@@ -181,6 +181,7 @@ function AddContact()
       {
           alert(err.message);
       }
+       hideOrShow( "contactList", true );
   }
   else
   {
