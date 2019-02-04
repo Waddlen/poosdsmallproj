@@ -151,11 +151,9 @@ function EditContact()
   document.getElementById("fname2").value = "";
   document.getElementById("lname2").value = "";
   document.getElementById("phone2").value = "";
-  document.getElementById("addr2").value = "";
-  
-  var fname3 = fname;  
+  document.getElementById("addr2").value = "";  
     
-  if(fname3 == "")
+  if(fname == ""||lname == ""||phone == ""||addr == "")
   {
     alert("Contact not Edited. Missing information");
   }
