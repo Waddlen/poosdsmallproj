@@ -38,11 +38,12 @@ function searchContacts() {
                     hideOrShow( "contactList", true );
                     document.getElementById("contactSearchResult").innerHTML = "Contact(s) retrieved successfully";
                     var jsonObject = JSON.parse( xhr.responseText );
+                    var table = document.getElementById("contactList");
+                    table.deleteTHead();
                     
                     for (var i = 0; i < jsonObject.results.length; i++)
                     {
                         //var opt = document.createElement("option");
-                        var table = document.getElementById("contactList");
                         var jsonObjectTwo = jsonObject.results[i];
                         var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
                         var newContact = table.createTHead(jsonObjectTwo.Userid);
@@ -50,6 +51,8 @@ function searchContacts() {
                         newContactinfo.scope = "row";
                         newContactinfo.value = "1";
                         newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
+                        newContactinfo.insertCell(1).outerHTML = "<td>"+jsonObjectTwo.ContactLastName+"</td>";
+                        newContactinfo.insertCell(2).outerHTML = "<td>"+jsonObjectTwo.ContactNumber+"</td>";
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
                         //alert(ContactName);
