@@ -36,7 +36,6 @@ function searchContacts() {
                 if (this.readyState == 4 && this.status == 200)
                 {
                     hideOrShow( "contactList", true );
-                    document.getElementById("contactSearchResult").innerHTML = "Contact(s) retrieved successfully";
                     var jsonObject = JSON.parse( xhr.responseText );
                     var table = document.getElementById("contactList");
                     table.deleteTHead();
