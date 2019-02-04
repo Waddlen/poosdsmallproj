@@ -217,16 +217,11 @@ function AddContact()
           {
             xhr.send(jsonPayload);
             var jsonObject = JSON.parse( xhr.responseText );
-            Userid = jsonObject.Userid;
-            if (Userid < 1)
-            {
-                Error = jsonObject.error;
-                document.getElementById("LogError").innerHTML = Error;
-                return;
-            }
-            Username = jsonObject.Username;
-            window.location.assign("contacts.html");
-            localStorage.setItem("Userid",Userid);
+            var error = jsonObject.error;
+            if (error != "")
+                {
+                    confirm("Error adding contact.");
+                }
           }
           catch(err)
           {
