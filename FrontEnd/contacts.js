@@ -73,7 +73,7 @@ function deleteThis(id){
         xhr.open("POST","./DeleteContact.php",false);
         xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
-        var jsonPayload = '{"Contactid" : "' + val + '"}';
+        var jsonPayload = '{"Contactid" : "' + id + '"}';
 
         try
         {
