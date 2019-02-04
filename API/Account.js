@@ -7,6 +7,50 @@ function addContact()
 {
 }
 
+function searchContacts() {
+    var search = document.getElementById("inlineFormInputName").value;
+    
+    if (localStorage.hasOwnProperty("Userid"))
+    {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./SearchContacts.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
+        var Userid = localStorage.getItem("Userid");
+        
+        var jsonPayload = '{"Search" : "' + search + '", "Userid" : "' + Userid + '"}';
+        
+        try
+        {
+            xhr.onreadystatechange = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    var values = '';
+                    var jsonObject = JSON.parse( xhr.responseText );
+                    var i;
+                    for (i = 0; i < jsonObject.results.length; i++)
+                    {
+                        values += jsonObject.results[i];
+                        values += "\r";
+                    }
+                    alert(values);
+                }
+            };
+            xhr.send(jsonPayload);
+        }
+        catch(err)
+        {
+            alert(err.message);
+        }
+    }
+    else 
+    {
+        document.getElementById("LogError").innerHTML = "You are not logged in.";
+        window.location.assign("index.html");
+    }
+}
+
 function doLogin(x)
 {
     var login = document.getElementById("user").value;
