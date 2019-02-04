@@ -57,6 +57,7 @@ function doLogin(x)
             }
             Username = jsonObject.Username;
             window.location.assign("contacts.html");
+            localStorage.setItem("Userid",Userid);
         }
         catch(err)
         {
@@ -102,6 +103,7 @@ function doLogin(x)
             }
             Username = jsonObject.Username;
             window.location.assign("contacts.html");
+            localStorage.setItem("Userid",Userid);
         }
         catch(err)
         {
