@@ -27,7 +27,7 @@
 				$ContactLastName = $row["ContactLastName"];
         $ContactNumber = $row["ContactNumber"];
 				$Address = $row["Address"];
-				$searchResults .= '{"Contactid":"' . $Contactid . '","Userid":"' . $Userid . '","ContactFirstName":"' . $ContactFirstName . '","ContactLastName":' . $ContactLastName . ',"ContactNumber":"' . $ContactNumber . '","Address":"' . $Address . '","error":""}';
+				$searchResults .= '{"Contactid":"' . $Contactid . '","Userid":"' . $Userid . '","ContactFirstName":"' . $ContactFirstName . '","ContactLastName":"' . $ContactLastName . '","ContactNumber":"' . $ContactNumber . '","Address":"' . $Address . '","error":""}';
 			}
 		}
 		else
