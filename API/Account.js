@@ -45,9 +45,9 @@ function searchContacts()
                     var jsonObject = JSON.parse( xhr.responseText );
                     var table = document.getElementById("contactList");
                     table.deleteTHead();
-                    var error = jsonObject.error;
                     
-                    if (error != "")
+                    var error = jsonObject.results[0];
+                    if (error == "")
                     {
                         for (var i = 0; i < jsonObject.results.length; i++)
                         {
