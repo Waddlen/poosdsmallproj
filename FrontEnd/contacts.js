@@ -157,29 +157,33 @@ function EditContact()
   {
     alert("Contact not Edited. Missing information");
   }
+  else
+  {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "./EditContact.php", false);
+      xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+      var id = localStorage.getItem("Userid");
+      var contact = localStorage.getItem("Updateid");
+
+      var jsonPayload = '{"Contactid" : "' + contact + '", "ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "ContactNumber" : "' + phone + '", "Address" : "' + addr + '", "Userid" : "' + id + '"}';
+
+      try
+      {
+        xhr.send(jsonPayload);
+        var jsonObject = JSON.parse( xhr.responseText );
+        var error = jsonObject.error;
+        if (error != "")
+            {
+                confirm("Error editing contact.");
+            }
+      }
+      catch(err)
+      {
+          alert(err.message);
+      }
+  }
     
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "./EditContact.php", false);
-  xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
-  var id = localStorage.getItem("Userid");
-  var contact = localStorage.getItem("Updateid");
-
-  var jsonPayload = '{"Contactid" : "' + contact + '", "ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "ContactNumber" : "' + phone + '", "Address" : "' + addr + '", "Userid" : "' + id + '"}';
-
-  try
-  {
-    xhr.send(jsonPayload);
-    var jsonObject = JSON.parse( xhr.responseText );
-    var error = jsonObject.error;
-    if (error != "")
-        {
-            confirm("Error editing contact.");
-        }
-  }
-  catch(err)
-  {
-      alert(err.message);
-  }
+  
 }
 
 function AddContact()
