@@ -141,7 +141,7 @@ function AddContact()
   xhr.open("POST", "./AddContact.php", false);
   xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
-  var jsonPayload = '{"ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "Contactnumber" : "' + phone + '", "Address" : "' + addr + '"}';
+  var jsonPayload = '{"ContactFirstName" : "' + fname + '", "ContactLastName" : "' + lname + '", "ContactNumber" : "' + phone + '", "Address" : "' + addr + '"}';
 
   try
   {
