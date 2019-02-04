@@ -16,7 +16,32 @@ function hideOrShow (elementId, showState)
     document.getElementById(elementId).style.display=dis;
 }
 
-function searchContacts() {
+function setUpdateId(val)
+{
+    localStorage.setItem("Updateid",val);
+}
+
+function deleteContact(val)
+{
+    var xhr= new XMLHttpRequest();
+    xhr.open("POST","./DeleteContact.php",false);
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+    
+    var jsonPayload = '{"Contactid" : "' + val + '"}';
+    
+    try
+    {
+        xhr.send(jsonPayload);
+        var jsonObject = JSON.parse( xhr.responseText );
+    }
+    catch(err)
+    {
+        alert(err.message);
+    }
+}
+
+function searchContacts() 
+    {
     var search = document.getElementById("inlineFormInputName").value;
     
     if (localStorage.hasOwnProperty("Userid"))
