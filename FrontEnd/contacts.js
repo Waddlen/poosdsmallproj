@@ -143,17 +143,17 @@ function editThis(el){
 
 function EditContact()
 {
-  var fname = document.getElementById("fname").value;
-  var lname = document.getElementById("lname").value;
-  var phone = document.getElementById("phone").value;
-  var addr = document.getElementById("addr").value;
+  var fname = document.getElementById("fname2").value;
+  var lname = document.getElementById("lname2").value;
+  var phone = document.getElementById("phone2").value;
+  var addr = document.getElementById("addr2").value;
     
-  document.getElementById("fname").value = "";
-  document.getElementById("lname").value = "";
-  document.getElementById("phone").value = "";
-  document.getElementById("addr").value = "";
+  document.getElementById("fname2").value = "";
+  document.getElementById("lname2").value = "";
+  document.getElementById("phone2").value = "";
+  document.getElementById("addr2").value = "";
     
-  if(fname == "" || lname == "" || phone == "")
+  if(fname2 == "" || lname2 == "" || phone2 == "" || addr2 == "")
   {
     alert("Contact not Edited. Missing information");
   }
@@ -198,7 +198,7 @@ function AddContact()
   document.getElementById("phone").value = "";
   document.getElementById("addr").value = "";
 
-  if(fname == "" || lname == "" || phone == "")
+  if(fname == "" || lname == "" || phone == "" || addr == "")
   {
     alert("Contact not Created. Missing information");
   }
