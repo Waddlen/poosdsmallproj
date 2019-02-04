@@ -64,7 +64,7 @@ function searchContacts()
                             var newContactinfo = newContact.insertRow(0);
                             newContactinfo.scope = "row";
                             newContactinfo.value = "1";
-                            newContactinfo.insertCell(0).outerHTML = '<th scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                            newContactinfo.insertCell(0).outerHTML = '<td scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
                             newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
                             newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
                             newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
