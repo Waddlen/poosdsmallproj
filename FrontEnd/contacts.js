@@ -202,8 +202,9 @@ function AddContact()
   {
     alert("Contact not Created. Missing information");
   }
-
-  if (localStorage.hasOwnProperty("Userid")) 
+  else
+  {
+      if (localStorage.hasOwnProperty("Userid")) 
   {
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "./AddContact.php", false);
@@ -236,5 +237,6 @@ function AddContact()
   else
   {
       window.location.assign("index.html");
+  }
   }
 }
