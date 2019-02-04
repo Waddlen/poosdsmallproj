@@ -52,7 +52,7 @@ function searchContacts()
                         if(str.includes("No Records Found"))
                         {
                             //alert("Error: no matching contacts found");
-                            var newContact = table.createTHead(jsonObjectTwo.Userid);
+                            var newContact = table.createTHead();
                             var newContactinfo = newContact.insertRow(0);
                             newContactinfo.scope = "row";
                             newContactinfo.insertCell(0).outerHTML = '<th scope="col">No matching contacts found</th>';
