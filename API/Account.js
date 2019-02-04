@@ -56,7 +56,7 @@ function searchContacts()
                         newContactinfo.scope = "row";
                         newContactinfo.value = "1";
                         newContactinfo.insertCell(0).outerHTML = '<th scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-                        newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"</th>";
+                        newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
                         newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"</th>";
                         newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"</th>";
                         newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
