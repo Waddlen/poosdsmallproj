@@ -50,7 +50,7 @@ function searchContacts() {
                         var newContactinfo = newContact.insertRow(0);
                         newContactinfo.scope = "row";
                         newContactinfo.value = "1";
-                        newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstNam+"</td>"
+                        newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>"
                         //alert(ContactName);
                         //opt.text = ContactName;
                         //opt.value = "";
