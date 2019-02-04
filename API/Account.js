@@ -193,6 +193,7 @@ function doLogin(x)
         {
             alert(err.message);
         }
+        hideOrShow( "contactList", true );
     }
     
     //are these .php files referring to, what? shouldn't doLogin refer to
