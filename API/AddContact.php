@@ -4,7 +4,7 @@
 	$ContactLastName = $_POST['ContactLastName'];
 	$ContactNumber = $_POST['ContactNumber'];
 	$Address = $_POST['Address'];
-	$Userid = localStorage.getItem("Userid");
+	$Userid = $_POST['Userid'];
 	//$Contactid = $_POST['Contactid']; //This field is auto-incremented by DB
 
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
