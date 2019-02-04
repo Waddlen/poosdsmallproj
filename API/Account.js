@@ -54,8 +54,8 @@ function searchContacts() {
                         newContactinfo.insertCell(2).outerHTML = "<td>"+jsonObjectTwo.ContactLastName+"</td>";
                         newContactinfo.insertCell(3).outerHTML = "<td>"+jsonObjectTwo.ContactNumber+"</td>";
                         newContactinfo.insertCell(4).outerHTML = "<td>"+jsonObjectTwo.Address+"</td>";
-                        newContactinfo.insertCell(5).outerHTML = '<td><button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></td>';
-                        newContactinfo.insertCell(6).outerHTML = '<td><button type="button" class="btn btn-primary btn" onclick="deleteThis(this)">Delete</button></td>';
+                        newContactinfo.insertCell(5).outerHTML = '<td><button type="button" value=jsonObject.Contactid class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button></td>';
+                        newContactinfo.insertCell(6).outerHTML = '<td><button type="button" value=jsonObject.Contactid class="btn btn-primary btn" onclick="deleteThis(this)">Delete</button></td>';
                         newContactinfo.cells.scope = "col";
                         //var newRow = table.rows[0];
                         //table.parent.insertBefore(newRow, table.rows[1]);
