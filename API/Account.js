@@ -46,33 +46,29 @@ function searchContacts()
                     var table = document.getElementById("contactList");
                     table.deleteTHead();
                     
-                    var error = jsonObject.results[0];
-                    if (error == "")
+                    for (var i = 0; i < jsonObject.results.length; i++)
                     {
-                        for (var i = 0; i < jsonObject.results.length; i++)
-                        {
-                            //var opt = document.createElement("option");
-                            var jsonObjectTwo = jsonObject.results[i];
-                            var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
-                            var newContact = table.createTHead(jsonObjectTwo.Userid);
-                            var newContactinfo = newContact.insertRow(0);
-                            newContactinfo.scope = "row";
-                            newContactinfo.value = "1";
-                            newContactinfo.insertCell(0).outerHTML = '<th scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-                            newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-                            newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-                            newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
-                            newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
-                            var Contactid = jsonObjectTwo.Contactid;
-                            newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" value="'+jsonObjectTwo.Contactid+'" onclick="setUpdateId(this.value)" class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>';
-                            newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" value="'+jsonObjectTwo.Contactid+'" class="btn btn-primary btn" onclick="deleteThis(this, this.value)">Delete</button></th>';
-                            //var newRow = table.rows[0];
-                            //table.parent.insertBefore(newRow, table.rows[1]);
-                            //alert(ContactName);
-                            //opt.text = ContactName;
-                            //opt.value = "";
-                            //contactList.options.add(opt);
-                        }
+                        //var opt = document.createElement("option");
+                        var jsonObjectTwo = jsonObject.results[i];
+                        var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
+                        var newContact = table.createTHead(jsonObjectTwo.Userid);
+                        var newContactinfo = newContact.insertRow(0);
+                        newContactinfo.scope = "row";
+                        newContactinfo.value = "1";
+                        newContactinfo.insertCell(0).outerHTML = '<th scope="col">'+(jsonObject.results.length - i)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                        newContactinfo.insertCell(1).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactFirstName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                        newContactinfo.insertCell(2).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactLastName+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                        newContactinfo.insertCell(3).outerHTML = '<th scope="col">'+jsonObjectTwo.ContactNumber+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>";
+                        newContactinfo.insertCell(4).outerHTML = '<th scope="col">'+jsonObjectTwo.Address+"</th>";
+                        var Contactid = jsonObjectTwo.Contactid;
+                        newContactinfo.insertCell(5).outerHTML = '<th scope="col"><button type="button" value="'+jsonObjectTwo.Contactid+'" onclick="setUpdateId(this.value)" class="btn btn-primary btn" data-toggle="modal" data-target="#EditContactModal">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>';
+                        newContactinfo.insertCell(6).outerHTML = '<th scope="col"><button type="button" value="'+jsonObjectTwo.Contactid+'" class="btn btn-primary btn" onclick="deleteThis(this, this.value)">Delete</button></th>';
+                        //var newRow = table.rows[0];
+                        //table.parent.insertBefore(newRow, table.rows[1]);
+                        //alert(ContactName);
+                        //opt.text = ContactName;
+                        //opt.value = "";
+                        //contactList.options.add(opt);
                     }
                 }
             };
