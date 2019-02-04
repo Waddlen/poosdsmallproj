@@ -1,174 +1,199 @@
 //API Interaction
-var APIRoot = "../API/";
+var APIRoot = "./";
 var fileExtension = ".php";
 var userId = 0;
 
-//Account Functions
-var users = 0;
-var contacts = 0;
-
-function addUser()
+function hideOrShow (elementId, showState)
 {
-    users++;
-    return(users);
-}
-
-function createAccount(name,pass)
-{
-    var id = addUser();
-    var login = document.getElementById("user").value;
-    var password = document.getElementById("pass").value;
-}
-
-//Login into Account
-function doLogin(x)
-{
-    //alert("Attempt Login");
-    var login = document.getElementById("user").value;
-    var password = document.getElementById("pass").value;
-
-    document.getElementById("user").value = "";
-    document.getElementById("pass").value = "";
-
-    //alert(login + " " + password);
-    //window.location.href = "contacts.html";
-
-    //Method 1 "JSON" FYI I'm pretty much copying from code.js so I'm not sure how well this will work
-    var jsonPayload = '{"Username" : "' + login + '", "Password" : "' + password + '"}';
-    var url;
-    var xhr= new XMLHttpRequest();
-
-    //Sign In
-    if(x == 0)
+    var vis = "visible";
+    var dis = "block";
+    if ( !showState)
     {
-        url = APIRoot + "Login" + fileExtension;
-        xhr.open("POST", url, false);
-        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+        vis = "hidden";
+        dis = "none";
+    }
+    document.getElementById(elementId).style.visibility=vis;
+    document.getElementById(elementId).style.display=dis;
+}
+
+function searchContacts() {
+    var search = document.getElementById("inlineFormInputName").value;
+    
+    if (localStorage.hasOwnProperty("Userid"))
+    {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./SearchContacts.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
+        var Userid = localStorage.getItem("Userid");
+        
+        var jsonPayload = '{"Search" : "' + search + '", "Userid" : "' + Userid + '"}';
+        
         try
         {
             xhr.onreadystatechange = function()
             {
                 if (this.readyState == 4 && this.status == 200)
                 {
-                    alert("Account Created");
+                    hideOrShow( "contactList", true );
+                    document.getElementById("contactSearchResult").innerHTML = "Contact(s) retrieved successfully";
+                    var jsonObject = JSON.parse( xhr.responseText );
+                    
+                    var i;
+                    for (i = 0; i < jsonObject.results.length; i++)
+                    {
+                        //var opt = document.createElement("option");
+                        var table = document.getElementById("contactList");
+                        var jsonObjectTwo = jsonObject.results[i];
+                        var ContactName = jsonObjectTwo.ContactFirstName +" "+ jsonObjectTwo.ContactLastName;
+                        var newContact = table.createTHead(jsonObjectTwo.Userid);
+                        var newContactinfo = newContact.insertRow(0);
+                        newContactinfo.scope = "row";
+                        newContactinfo.value = "1";
+                        newContactinfo.insertCell(0).outerHTML = "<td>"+jsonObjectTwo.ContactFirstName+"</td>";
+                        var newRow = table.rows[0];
+                        table.parent.insertBefore(newRow, table.rows[1]);
+                        //alert(ContactName);
+                        //opt.text = ContactName;
+                        //opt.value = "";
+                        //contactList.options.add(opt);
+                    }
                 }
             };
             xhr.send(jsonPayload);
-            /* This Looks like User info for the Contact page
-            firstName = jsonObject.firstName;
-            lastName = jsonObject.lastName;
-
-            document.getElementById("userName").innerHTML = firstName + " " + lastName;
-            
-            document.getElementById("loginName").value = "";
-            document.getElementById("loginPassword").value = "";
-            
-            hideOrShow( "loggedInDiv", true);
-            hideOrShow( "accessUIDiv", true);
-            hideOrShow( "loginDiv", false);
-            */
         }
         catch(err)
         {
-            document.getElementById("LogError").innerHTML = err.message;
+            document.getElementById("contactSearchResult").innerHTML = err.message;
         }
     }
-    //Create Account
-    else if(x == 1)
+    else 
     {
-        /*
-        var Fname = document.getElementById("fname").value;
-        var Lname = document.getElementById("lname").value;
-        var Email = document.getElementById("email").value;
-        var Addr = document.getElementById("addr").value;
-
-        document.getElementById("fname").value = "";
-        document.getElementById("lname").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("addr").value = "";
-        */
-
-        url = APIRoot + "CreateAccount" + fileExtension;
-        xhr.open("POST", url, false);
-        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-        try
-        {
-            xhr.send(jsonPayload);
-            
-            var jsonObject = JSON.parse( xhr.responseText );
-            
-            userId = jsonObject.id;
-            
-            if( userId < 1 )
-            {
-                document.getElementById("LogError").innerHTML = "Account Info is incorrect or already taken";
-                return;
-            }
-            /* This Looks like User info for the Contact page
-            firstName = jsonObject.firstName;
-            lastName = jsonObject.lastName;
-
-            document.getElementById("userName").innerHTML = firstName + " " + lastName;
-            
-            document.getElementById("loginName").value = "";
-            document.getElementById("loginPassword").value = "";
-            
-            hideOrShow( "loggedInDiv", true);
-            hideOrShow( "accessUIDiv", true);
-            hideOrShow( "loginDiv", false);
-            */
-        }
-        catch(err)
-        {
-            document.getElementById("LogError").innerHTML = err.message;
-        }
+        window.location.assign("index.html");
     }
+}
 
-    /*Method 2 "Post"
+function doLogout()
+{
+    window.location.assign("index.html");
+    localStorage.removeItem("Userid");
+}
+
+function doLogin(x)
+{
+    var login = document.getElementById("user").value;
+    var password = document.getElementById("pass").value;
+
+    var jsonPayload = '{"Username" : "' + login + '", "Password" : "' + password + '"}';
+
     //(0) means signing into account
     if(x == 0)
     {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./Login.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
         //should access Login.php and post values to them. May need to use: $name = $_Post['Username']; to get value
+//         $.post('Login.php', {Username: login, Password: password},
+//         function(data)
+//         {
+//             //if .php states: echo "0"; all is good
+//             if(data == "0")
+//             {
+//                 window.location.assign(window.location.hostname + "/contacts.html");
+//             }
+//             //Wrong password
+//             else if(data == "1")
+//             {
+//                 document.getElementById("LogError").innerHTML = "Password was incorrect";
+//             }
+//             //Account doesn't exist
+//             else
+//             {
+//                 document.getElementById("LogError").innerHTML = "This account does not exist";
+//             }
+//         });
         
-        
-        $.post('Login.php', {Username: login, Password: password},
-        function(data)
+        try
         {
-            //if .php states: echo "0"; all is good
-            if(data == "0")
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+            Userid = jsonObject.Userid;
+            LastLogin = jsonObject.LastLogin;
+            DateCreated = jsonObject.DateCreated;
+            if (Userid < 1)
             {
-                window.location.href = "contacts.html";
+                Error = jsonObject.error;
+                document.getElementById("LogError").innerHTML = Error;
+                return;
             }
-            //Wrong password
-            else if(data == "1")
-            {
-                document.getElementById("LogError").innerHTML = "Password was incorrect";
-            }
-            //Account doesn't exist
-            else
-            {
-                document.getElementById("LogError").innerHTML = "This account does not exist";
-            }
-        });
+            Username = jsonObject.Username;
+            window.location.assign("contacts.html");
+            localStorage.setItem("Userid",Userid);
+        }
+        catch(err)
+        {
+            alert(err.message);
+        }
+        
+        //xhr.open("GET", "Login.php", true);
+        //xhr.send();
     }
     //(1) means creating an account
     else if(x == 1)
     {
+        var xhr= new XMLHttpRequest();
+        xhr.open("POST","./CreateAccount.php",false);
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
         //should access CreateAccount.php and post values to them. May need to use: $name = $_Post['Username']; to get value
-        $.post('CreateAccount.php', {Username: login, Password: password},
-        function(data)
+//         $.post('CreateAccount.php', {Username: login, Password: password},
+//         function(data)
+//         {
+//             //if .php states: echo "0"; all is good
+//             if(data == "0")
+//             {
+//                 window.location.href = "contacts.html"
+//             }
+//             //Username is already being used
+//             else
+//             {
+//                 document.getElementById("LogError").innerHTML = "Sorry, but this Username has been taken";
+//             }
+//         });
+        
+        try
         {
-            //if .php states: echo "0"; all is good
-            if(data == "0")
+            xhr.send(jsonPayload);
+            var jsonObject = JSON.parse( xhr.responseText );
+            Userid = jsonObject.Userid;
+            if (Userid < 1)
             {
-                window.location.href = "contacts.html";
+                Error = jsonObject.error;
+                document.getElementById("LogError").innerHTML = Error;
+                return;
             }
-            //Username is already being used
-            else
-            {
-                document.getElementById("LogError").innerHTML = "Sorry, but this Username has been taken";
-            }
-        });
+            Username = jsonObject.Username;
+            window.location.assign("contacts.html");
+            localStorage.setItem("Userid",Userid);
+        }
+        catch(err)
+        {
+            alert(err.message);
+        }
     }
-    */
+    
+    //are these .php files referring to, what? shouldn't doLogin refer to
+    //Login.php or CreateAccount.php? Why is it referring instead to these?
+    
 }
+
+// function getAccountDate()
+// {
+//     var d = new Date();
+//     var m = d.getMonth();
+//     var t = d.getDay();
+//     var y = d.getFullYear();
+//     //alert(m + " " + t + ", " + y);
+//     return(m + " " + t + ", " + y);
+// }
