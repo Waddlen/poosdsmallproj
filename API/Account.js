@@ -8,7 +8,7 @@ function addContact()
 }
 
 function searchContacts() {
-    var search = document.getElementById("inlineFormInputName").value;
+    var search = document.getElementById("searchButton").value;
     
     if (localStorage.hasOwnProperty("Userid"))
     {
