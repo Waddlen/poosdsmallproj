@@ -46,8 +46,8 @@ function searchContacts() {
     }
     else 
     {
-        document.getElementById("LogError").innerHTML = "You are not logged in.";
         window.location.assign("index.html");
+        document.getElementById("LogError").innerHTML = "You are not logged in";
     }
 }
 
