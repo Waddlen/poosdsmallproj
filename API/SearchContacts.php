@@ -4,6 +4,7 @@
 	$searchCount = 0;
 	$search = $_POST['Search'];
 	$Userid = $_POST['Userid'];
+	$error = "";
 	$conn = new mysqli("poosddb.ckbkojoxq1y0.us-east-1.rds.amazonaws.com", "poosdAdmin", "DontForgetThis321", "poosdDB");
 	if ($conn->connect_error)
 	{
@@ -37,7 +38,8 @@
 		}
 		else
 		{
-			returnWithError( "No Records Found" );
+			//returnWithError( "No Records Found" );
+			$error = "No Records Found";
 		}
 		$conn->close();
 	}
@@ -58,7 +60,7 @@
 
 	function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"results":[' . $searchResults . '],"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 
